@@ -98,6 +98,7 @@ func _on_MouseSelectArea_input_event(_viewport: Node, event: InputEvent, _shape_
 				moused_down = true
 			else:
 				if moused_down:
+					$SoundClick.play()
 					emit_signal("card_clicked", self)
 				moused_down = false
 
@@ -106,6 +107,7 @@ func _on_MouseSelectArea_mouse_exited() -> void:
 
 func _on_MouseHoverArea_mouse_entered() -> void:
 	mouse_over = true
+	$SoundHover.play()
 	if !mousehover_ignore:
 		grow_card()
 

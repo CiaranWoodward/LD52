@@ -7,7 +7,7 @@
 [node name="ShopFloor" type="Control"]
 margin_right = 110.0
 margin_bottom = 161.4
-rect_min_size = Vector2( 1320, 400 )
+rect_min_size = Vector2( 1320, 300 )
 mouse_filter = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
@@ -33,44 +33,51 @@ position = Vector2( 1253, 25 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
-[node name="CoinStall" type="Node2D" parent="."]
-position = Vector2( 860, 109 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Card" parent="CoinStall" instance=ExtResource( 1 )]
-
-[node name="CheerStall" type="Node2D" parent="."]
-position = Vector2( 736, 107 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="Card" parent="CheerStall" instance=ExtResource( 1 )]
-
 [node name="Firework" type="Node2D" parent="."]
-position = Vector2( 147, 116 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 173, 143 )
+scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Firework" instance=ExtResource( 1 )]
+growScale = 1.5
 
 [node name="Firecracker" type="Node2D" parent="."]
-position = Vector2( 283, 116 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 309, 143 )
+scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Firecracker" instance=ExtResource( 1 )]
+growScale = 1.5
 
 [node name="Lantern" type="Node2D" parent="."]
-position = Vector2( 142, 275 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 445, 143 )
+scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Lantern" instance=ExtResource( 1 )]
+growScale = 1.5
 
 [node name="MoonCrane" type="Node2D" parent="."]
-position = Vector2( 464, 274 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 647, 143 )
+scale = Vector2( 2, 2 )
 
 [node name="Card" parent="MoonCrane" instance=ExtResource( 1 )]
+growScale = 1.5
 
 [node name="Dragon" type="Node2D" parent="."]
-position = Vector2( 593, 277 )
-scale = Vector2( 1.5, 1.5 )
+position = Vector2( 785, 143 )
+scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Dragon" instance=ExtResource( 1 )]
+growScale = 1.5
+
+[node name="LightStall" type="Node2D" parent="."]
+position = Vector2( 991, 143 )
+scale = Vector2( 2, 2 )
+
+[node name="Card" parent="LightStall" instance=ExtResource( 1 )]
+growScale = 1.5
+
+[node name="CoinStall" type="Node2D" parent="."]
+position = Vector2( 1128, 143 )
+scale = Vector2( 2, 2 )
+
+[node name="Card" parent="CoinStall" instance=ExtResource( 1 )]
+growScale = 1.5

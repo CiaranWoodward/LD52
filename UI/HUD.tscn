@@ -6,24 +6,36 @@
 [node name="HUD" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Card" parent="." instance=ExtResource( 1 )]
-position = Vector2( 846, 974 )
-rotation = -0.0793572
+[node name="DiscardPileLoc" type="Position2D" parent="."]
+position = Vector2( 286, 1021 )
+rotation = -0.355961
 
-[node name="Card2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 967, 992 )
-rotation = 0.30212
-
-[node name="Card3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 722, 1000 )
-rotation = -0.314255
-
-[node name="Card4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 849, 674 )
-rotation = 0.504056
+[node name="Card4" parent="DiscardPileLoc" instance=ExtResource( 1 )]
 is_active = false
 
-[node name="Card5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 555, 708 )
-rotation = -0.314255
+[node name="DrawPileLoc" type="Position2D" parent="."]
+position = Vector2( 1666, 1031 )
+rotation = 0.374711
+
+[node name="Card5" parent="DrawPileLoc" instance=ExtResource( 1 )]
 is_active = false
+
+[node name="HandLoc" type="Position2D" parent="."]
+position = Vector2( 1021, 826 )
+
+[node name="1" type="Position2D" parent="HandLoc"]
+position = Vector2( -116, -48 )
+rotation = -0.376973
+
+[node name="Card" parent="HandLoc/1" instance=ExtResource( 1 )]
+
+[node name="2" type="Position2D" parent="HandLoc"]
+position = Vector2( 0, -89 )
+
+[node name="Card2" parent="HandLoc/2" instance=ExtResource( 1 )]
+
+[node name="3" type="Position2D" parent="HandLoc"]
+position = Vector2( 144, -55 )
+rotation = 0.50306
+
+[node name="Card3" parent="HandLoc/3" instance=ExtResource( 1 )]

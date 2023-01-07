@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Graphics/e0000.png" type="Texture" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 100
+follow_viewport_enable = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.431373 )
+margin_left = -50.0
+margin_top = -70.7
+margin_right = 50.0
+margin_bottom = 70.7
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 100, 141.4 )
+texture = ExtResource( 2 )
+patch_margin_left = 50
+
+[node name="DiscardButton" type="TextureButton" parent="."]
+self_modulate = Color( 0.784314, 0.54902, 0.54902, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -45.0
+margin_top = -1002.0
+margin_right = -1875.0
+margin_bottom = -982.0
+grow_vertical = 0
+rect_scale = Vector2( 0.99733, 1 )
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Discard" type="Label" parent="DiscardButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Discard"
+align = 1
+valign = 1
+
+[node name="UpgradeCard" type="NinePatchRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0.431373 )
+margin_left = -50.0
+margin_top = -226.0
+margin_right = 50.0
+margin_bottom = -84.6
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 100, 141.4 )
+texture = ExtResource( 2 )
+patch_margin_left = 50
+
+[node name="Card" parent="UpgradeCard" instance=ExtResource( 1 )]
+position = Vector2( 50, 70 )
+scale = Vector2( 1.53337, 1.53337 )
+
+[node name="UpgradeButton" type="TextureButton" parent="UpgradeCard"]
+self_modulate = Color( 0.784314, 0.54902, 0.54902, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = -25.0
+margin_right = -5.0
+margin_bottom = -5.0
+grow_vertical = 0
+rect_min_size = Vector2( 80, 0 )
+rect_scale = Vector2( 0.99733, 1 )
+texture_normal = ExtResource( 2 )
+expand = true
+
+[node name="Upgrade" type="Label" parent="UpgradeCard/UpgradeButton"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Upgrade"
+align = 1
+valign = 1

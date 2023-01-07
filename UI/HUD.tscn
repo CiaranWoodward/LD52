@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
+
+[node name="HUD" type="Node2D"]
+
+[node name="Card" parent="." instance=ExtResource( 1 )]
+position = Vector2( 846, 974 )
+rotation = -0.0793572
+
+[node name="Card2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 967, 992 )
+rotation = 0.30212
+
+[node name="Card3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 722, 1000 )
+rotation = -0.314255

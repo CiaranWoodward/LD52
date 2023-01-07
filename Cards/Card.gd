@@ -31,6 +31,7 @@ func _ready() -> void:
 	add_child(growTween)
 	add_child(reseatTween)
 	set_active(is_active)
+	Global.connect("unhovered_card", self, "_other_card_unhovered")
 
 func set_active(active: bool):
 	is_active = active
@@ -71,6 +72,7 @@ func reseat_to(target, delay=0.0, offset=Vector2.ZERO, rotationoffset=0.0, callb
 	var reseatTime = rand_range(reseatTimeLow, reseatTimeHigh)
 	set_mousehover_ignore(true)
 	reseatTween.stop_all()
+	reseatTween.interpolate_property(self, "global_scale", global_scale, target.global_scale, reseatTime, reseatTrans, reseatEase, delay)
 	reseatTween.interpolate_property(self, "global_position", global_position, target.global_position + offset, reseatTime, reseatTrans, reseatEase, delay)
 	reseatTween.interpolate_property(self, "global_rotation", global_rotation, target.global_rotation + rotationoffset, reseatTime, reseatTrans, reseatEase, delay)
 	reseatTween.interpolate_callback(self, reseatTime + delay, "_reseat_done")
@@ -112,8 +114,12 @@ func _on_MouseHoverArea_mouse_exited() -> void:
 	if !mousehover_ignore:
 		shrink_card()
 
+func _other_card_unhovered():
+	if !mousehover_ignore && mouse_over && is_active && Global.hover_card(self):
+		grow_card()
+
 func grow_card() -> void:
-	if is_active:
+	if is_active && Global.hover_card(self):
 		growTween.stop_all()
 		growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2(growScale, growScale), growTime, growTrans, growEase)
 		growTween.interpolate_property(self, "global_rotation", global_rotation, 0, growTime, growTrans, growEase)
@@ -126,6 +132,7 @@ func grow_card() -> void:
 		growTween.start()
 
 func shrink_card() -> void:
+	Global.unhover_card(self)
 	growTween.stop_all()
 	growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2.ONE, growTime, growTrans, growEase)
 	growTween.interpolate_property(self, "rotation", rotation, 0, growTime, growTrans, growEase)

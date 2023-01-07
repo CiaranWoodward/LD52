@@ -42,6 +42,7 @@ func set_active(active: bool):
 			grow_card()
 	else:
 		$Scaler/CardBack.visible = true
+		z_index = 0
 		if mouse_over && !mousehover_ignore:
 			grow_card()
 
@@ -117,6 +118,7 @@ func grow_card() -> void:
 		growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2(growScale, growScale), growTime, growTrans, growEase)
 		growTween.interpolate_property(self, "global_rotation", global_rotation, 0, growTime, growTrans, growEase)
 		growTween.start()
+		z_index = 1
 	else:
 		growTween.stop_all()
 		growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2(growScaleInactive, growScaleInactive), growTime, growTrans, growEase)
@@ -128,3 +130,4 @@ func shrink_card() -> void:
 	growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2.ONE, growTime, growTrans, growEase)
 	growTween.interpolate_property(self, "rotation", rotation, 0, growTime, growTrans, growEase)
 	growTween.start()
+	z_index = 0

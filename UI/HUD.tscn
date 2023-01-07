@@ -10,7 +10,7 @@
 script = ExtResource( 2 )
 
 [node name="DiscardPile" type="Position2D" parent="."]
-position = Vector2( 286, 1021 )
+position = Vector2( 657, 892 )
 rotation = -0.355961
 script = ExtResource( 3 )
 
@@ -18,7 +18,7 @@ script = ExtResource( 3 )
 is_active = false
 
 [node name="DrawPile" type="Position2D" parent="."]
-position = Vector2( 1666, 1031 )
+position = Vector2( 1462, 883 )
 rotation = 0.374711
 script = ExtResource( 4 )
 

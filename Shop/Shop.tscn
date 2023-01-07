@@ -42,7 +42,6 @@ mouse_filter = 2
 [node name="ShopFloor" parent="GreyOut/Backing/VBoxContainer" instance=ExtResource( 3 )]
 margin_right = 1420.0
 margin_bottom = 300.0
-mouse_filter = 2
 
 [node name="Deck" type="NinePatchRect" parent="GreyOut/Backing/VBoxContainer"]
 self_modulate = Color( 0.858824, 0.654902, 0.458824, 1 )

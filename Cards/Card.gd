@@ -3,7 +3,7 @@ extends Node2D
 export(Global.TransitionType) var growTrans = Global.TransitionType.EXPO
 export(Global.EaseType) var growEase = Global.EaseType.OUT
 export var growTime = 0.2
-export var growScale = 2
+export var growScale = 2.0
 export var growScaleInactive = 1.1
 
 onready var growTween = Tween.new()

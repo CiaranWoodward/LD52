@@ -19,6 +19,7 @@ scale = Vector2( 1, 1.414 )
 texture = ExtResource( 2 )
 
 [node name="CardBack" type="Sprite" parent="Scaler"]
+visible = false
 modulate = Color( 0.380392, 0.0666667, 0.0666667, 1 )
 scale = Vector2( 1, 1.414 )
 texture = ExtResource( 2 )
@@ -26,11 +27,13 @@ texture = ExtResource( 2 )
 [node name="MouseSelectArea" type="Area2D" parent="Scaler"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scaler/MouseSelectArea"]
+visible = false
 shape = SubResource( 2 )
 
 [node name="MouseHoverArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseHoverArea"]
+visible = false
 shape = SubResource( 1 )
 
 [connection signal="input_event" from="Scaler/MouseSelectArea" to="." method="_on_MouseSelectArea_input_event"]

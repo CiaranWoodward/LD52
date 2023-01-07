@@ -32,14 +32,12 @@ rotation = -0.376973
 
 [node name="Card" parent="Hand/1" instance=ExtResource( 1 )]
 position = Vector2( -15.1738, -2.42236 )
-growScale = 1.6
 
 [node name="2" type="Position2D" parent="Hand"]
 position = Vector2( 11, -33.5 )
 
 [node name="Card2" parent="Hand/2" instance=ExtResource( 1 )]
 position = Vector2( -9.88892, -3.16666 )
-growScale = 1.6
 
 [node name="3" type="Position2D" parent="Hand"]
 position = Vector2( 112, -37 )
@@ -47,7 +45,6 @@ rotation = 0.50306
 
 [node name="Card3" parent="Hand/3" instance=ExtResource( 1 )]
 position = Vector2( -8.25336, 34.0915 )
-growScale = 1.6
 
 [node name="DiscardPile" type="Position2D" parent="."]
 position = Vector2( 1335, 1007 )

@@ -43,6 +43,7 @@ func set_active(active: bool):
 			grow_card()
 	else:
 		$Scaler/CardBack.visible = true
+		Global.unhover_card(self)
 		z_index = 0
 		if mouse_over && !mousehover_ignore:
 			grow_card()
@@ -59,10 +60,12 @@ func instant_transfer(target):
 		return
 	var pos = global_position
 	var rot = global_rotation
+	var scale_ = global_scale
 	get_parent().remove_child(self)
 	target.add_child(self)
 	global_position = pos
 	global_rotation = rot
+	global_scale = scale_
 
 func reseat_to(target, delay=0.0, offset=Vector2.ZERO, rotationoffset=0.0, callback=null):
 	reseat_target = target
@@ -84,6 +87,7 @@ func _reseat_done():
 	if is_instance_valid(reseat_target) && reseat_target != get_parent():
 		position = reseat_offset
 		rotation = reseat_rotationoffset
+		scale = Vector2.ONE
 		get_parent().remove_child(self)
 		reseat_target.add_child(self)
 	if is_instance_valid(reseat_callback):

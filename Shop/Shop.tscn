@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Graphics/e0000.png" type="Texture" id=1]
 [ext_resource path="res://Shop/CardHolder.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Shop/ShopFloor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Graphics/Cards/frame0000.png" type="Texture" id=4]
+[ext_resource path="res://Shop/DeckScroller.gd" type="Script" id=5]
 
 [node name="Shop" type="Control"]
 anchor_right = 1.0
@@ -73,7 +74,7 @@ text = "Select a card to upgrade or discard"
 align = 1
 valign = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer"]
+[node name="DeckScroller" type="ScrollContainer" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer"]
 margin_top = 44.0
 margin_right = 1278.0
 margin_bottom = 574.0
@@ -82,8 +83,9 @@ grow_vertical = 2
 rect_min_size = Vector2( 0, 530 )
 mouse_filter = 2
 scroll_horizontal_enabled = false
+script = ExtResource( 5 )
 
-[node name="GridContainer" type="GridContainer" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer"]
+[node name="GridContainer" type="GridContainer" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller"]
 margin_right = 1266.0
 margin_bottom = 1028.0
 grow_horizontal = 2
@@ -91,57 +93,57 @@ grow_vertical = 2
 mouse_filter = 2
 columns = 5
 
-[node name="Card1" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card1" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 
-[node name="Card2" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card2" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 margin_left = 254.0
 margin_right = 504.0
 
-[node name="Card3" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card3" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 margin_left = 508.0
 margin_right = 758.0
 
-[node name="Card4" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card4" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 margin_left = 762.0
 margin_right = 1012.0
 
-[node name="Card5" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card5" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 margin_left = 1016.0
 margin_right = 1266.0
 
-[node name="Card6" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card6" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 margin_top = 344.0
 margin_bottom = 684.0
 
-[node name="Card7" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card7" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 margin_left = 254.0
 margin_top = 344.0
 margin_right = 504.0
 margin_bottom = 684.0
 
-[node name="Card8" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card8" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 margin_left = 508.0
 margin_top = 344.0
 margin_right = 758.0
 margin_bottom = 684.0
 
-[node name="Card9" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card9" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 margin_left = 762.0
 margin_top = 344.0
 margin_right = 1012.0
 margin_bottom = 684.0
 
-[node name="Card10" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card10" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 margin_left = 1016.0
 margin_top = 344.0
 margin_right = 1266.0
 margin_bottom = 684.0
 
-[node name="Card11" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card11" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 margin_top = 688.0
 margin_bottom = 1028.0
 
-[node name="Card12" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+[node name="Card12" parent="GreyOut/Backing/VBoxContainer/Deck/VBoxContainer/DeckScroller/GridContainer" instance=ExtResource( 2 )]
 margin_left = 254.0
 margin_top = 688.0
 margin_right = 504.0

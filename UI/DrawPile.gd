@@ -44,6 +44,7 @@ func add_shuffled_cards(cards):
 		var rotate_offset = rand_range(-rand_rotation, rand_rotation)
 		var reseat_time
 		curcount += 1
+		card.instant_transfer(self)
 		reseat_time = card.reseat_to(self, delay, offset, rotate_offset)
 		if reseat_time > longest_delay:
 			longest_delay = reseat_time
@@ -56,7 +57,8 @@ func _cards_added():
 	emit_signal("cards_added")
 
 func get_next_card() -> Card:
-	if get_count() == 0:
+	var ccount = get_count()
+	if ccount == 0:
 		return null
-	var retcard: Card = get_child(0)
+	var retcard: Card = get_child(ccount-1)
 	return retcard

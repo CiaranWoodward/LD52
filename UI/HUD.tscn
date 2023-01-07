@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/HUD.gd" type="Script" id=2]
 [ext_resource path="res://UI/DiscardPile.gd" type="Script" id=3]
 [ext_resource path="res://UI/DrawPile.gd" type="Script" id=4]
 [ext_resource path="res://UI/Hand.gd" type="Script" id=5]
+[ext_resource path="res://Sounds/Shuffle.wav" type="AudioStream" id=6]
 
 [node name="HUD" type="Node2D"]
 script = ExtResource( 2 )
@@ -54,3 +55,9 @@ script = ExtResource( 3 )
 
 [node name="Card4" parent="DiscardPile" instance=ExtResource( 1 )]
 is_active = false
+
+[node name="SoundShuffle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -15.731
+pitch_scale = 0.8
+bus = "Cards"

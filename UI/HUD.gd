@@ -28,6 +28,7 @@ func _card_discarded():
 func replace_draw():
 	if _draw.get_count() == 0:
 		_draw.add_shuffled_cards(_discard.cards())
+		$SoundShuffle.play()
 
 func _draw_replaced():
 	draw_card()

@@ -84,6 +84,8 @@ func reseat_to(target, delay=0.0, offset=Vector2.ZERO, rotationoffset=0.0, callb
 
 func _reseat_done():
 	set_mousehover_ignore(false)
+	$SoundSoftPlace.pitch_scale = rand_range(0.8, 1.2)
+	$SoundSoftPlace.play()
 	if is_instance_valid(reseat_target) && reseat_target != get_parent():
 		position = reseat_offset
 		rotation = reseat_rotationoffset
@@ -102,6 +104,8 @@ func _on_MouseSelectArea_input_event(_viewport: Node, event: InputEvent, _shape_
 				moused_down = true
 			else:
 				if moused_down:
+					$SoundClick.pitch_scale = rand_range(1, 1.1)
+					$SoundClick.play()
 					emit_signal("card_clicked", self)
 				moused_down = false
 
@@ -110,6 +114,8 @@ func _on_MouseSelectArea_mouse_exited() -> void:
 
 func _on_MouseHoverArea_mouse_entered() -> void:
 	mouse_over = true
+	$SoundHover.pitch_scale = rand_range(1.3, 1.5)
+	$SoundHover.play()
 	if !mousehover_ignore:
 		grow_card()
 

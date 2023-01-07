@@ -11,7 +11,8 @@ export var growScaleInactive = 1.1
 
 export(Global.TransitionType) var reseatTrans = Global.TransitionType.BACK
 export(Global.EaseType) var reseatEase = Global.EaseType.IN
-export var reseatTime = 0.4
+export var reseatTimeLow = 0.4
+export var reseatTimeHigh = 0.6
 
 onready var growTween = Tween.new()
 onready var reseatTween = Tween.new()
@@ -21,6 +22,7 @@ var moused_down = false
 var reseat_target = null
 var reseat_offset = Vector2.ZERO
 var reseat_rotationoffset = 0
+var reseat_callback = null
 export var is_active = true setget set_active
 var mousehover_ignore = false setget set_mousehover_ignore
 
@@ -50,29 +52,43 @@ func set_mousehover_ignore(newval: bool):
 		growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2.ONE, growTime, growTrans, growEase)
 		growTween.start()
 
-func reseat_to(target, delay=0.0, offset=Vector2.ZERO, rotationoffset=0.0):
+func instant_transfer(target):
+	if target == get_parent():
+		return
+	var pos = global_position
+	var rot = global_rotation
+	get_parent().remove_child(self)
+	target.add_child(self)
+	global_position = pos
+	global_rotation = rot
+
+func reseat_to(target, delay=0.0, offset=Vector2.ZERO, rotationoffset=0.0, callback=null):
 	reseat_target = target
 	reseat_offset = offset
 	reseat_rotationoffset = rotationoffset
+	reseat_callback = callback
+	var reseatTime = rand_range(reseatTimeLow, reseatTimeHigh)
 	set_mousehover_ignore(true)
 	reseatTween.stop_all()
 	reseatTween.interpolate_property(self, "global_position", global_position, target.global_position + offset, reseatTime, reseatTrans, reseatEase, delay)
 	reseatTween.interpolate_property(self, "global_rotation", global_rotation, target.global_rotation + rotationoffset, reseatTime, reseatTrans, reseatEase, delay)
 	reseatTween.interpolate_callback(self, reseatTime + delay, "_reseat_done")
 	reseatTween.start()
+	return reseatTime + delay
 
 func _reseat_done():
 	set_mousehover_ignore(false)
-	if !is_instance_valid(reseat_target):
-		return
-	if reseat_target == get_parent():
-		return
-	position = reseat_offset
-	rotation = reseat_rotationoffset
-	get_parent().remove_child(self)
-	reseat_target.add_child(self)
+	if is_instance_valid(reseat_target) && reseat_target != get_parent():
+		position = reseat_offset
+		rotation = reseat_rotationoffset
+		get_parent().remove_child(self)
+		reseat_target.add_child(self)
+	if is_instance_valid(reseat_callback):
+		reseat_callback.call_deferred("call_func")
 	
-func _on_MouseSelectArea_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_MouseSelectArea_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if !is_active:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
 			if event.pressed:

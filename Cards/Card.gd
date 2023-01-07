@@ -1,4 +1,5 @@
 extends Node2D
+class_name Card
 
 signal card_clicked(card)
 
@@ -8,7 +9,7 @@ export var growTime = 0.2
 export var growScale = 2
 export var growScaleInactive = 1.1
 
-export(Global.TransitionType) var reseatTrans = Global.TransitionType.EXPO
+export(Global.TransitionType) var reseatTrans = Global.TransitionType.BACK
 export(Global.EaseType) var reseatEase = Global.EaseType.IN
 export var reseatTime = 0.4
 
@@ -18,7 +19,10 @@ onready var reseatTween = Tween.new()
 var mouse_over = false
 var moused_down = false
 var reseat_target = null
+var reseat_offset = Vector2.ZERO
+var reseat_rotationoffset = 0
 export var is_active = true setget set_active
+var mousehover_ignore = false setget set_mousehover_ignore
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,28 +32,43 @@ func _ready() -> void:
 
 func set_active(active: bool):
 	is_active = active
+	$MouseHoverArea/ActiveHoverShape.set_deferred("disabled", !active)
+	$MouseHoverArea/InactiveHoverShape.set_deferred("disabled", active)
 	if (is_active):
 		$Scaler/CardBack.visible = false
-		if mouse_over:
-			_on_MouseHoverArea_mouse_entered()
+		if mouse_over && !mousehover_ignore:
+			grow_card()
 	else:
 		$Scaler/CardBack.visible = true
-		if mouse_over:
-			_on_MouseHoverArea_mouse_entered()
+		if mouse_over && !mousehover_ignore:
+			grow_card()
 
-func reseat_to(target, delay=0.0):
+func set_mousehover_ignore(newval: bool):
+	mousehover_ignore = newval
+	if mousehover_ignore:
+		growTween.stop_all()
+		growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2.ONE, growTime, growTrans, growEase)
+		growTween.start()
+
+func reseat_to(target, delay=0.0, offset=Vector2.ZERO, rotationoffset=0.0):
 	reseat_target = target
+	reseat_offset = offset
+	reseat_rotationoffset = rotationoffset
+	set_mousehover_ignore(true)
 	reseatTween.stop_all()
-	reseatTween.interpolate_property(self, "global_position", global_position, target.global_position, reseatTime, reseatTrans, reseatEase, delay)
-	reseatTween.interpolate_property(self, "global_rotation", global_rotation, target.global_rotation, reseatTime, reseatTrans, reseatEase, delay)
+	reseatTween.interpolate_property(self, "global_position", global_position, target.global_position + offset, reseatTime, reseatTrans, reseatEase, delay)
+	reseatTween.interpolate_property(self, "global_rotation", global_rotation, target.global_rotation + rotationoffset, reseatTime, reseatTrans, reseatEase, delay)
 	reseatTween.interpolate_callback(self, reseatTime + delay, "_reseat_done")
 	reseatTween.start()
 
 func _reseat_done():
+	set_mousehover_ignore(false)
 	if !is_instance_valid(reseat_target):
 		return
-	position = Vector2.ZERO
-	rotation = 0
+	if reseat_target == get_parent():
+		return
+	position = reseat_offset
+	rotation = reseat_rotationoffset
 	get_parent().remove_child(self)
 	reseat_target.add_child(self)
 	
@@ -61,7 +80,6 @@ func _on_MouseSelectArea_input_event(viewport: Node, event: InputEvent, shape_id
 			else:
 				if moused_down:
 					emit_signal("card_clicked", self)
-					print("Card clicked")
 				moused_down = false
 
 func _on_MouseSelectArea_mouse_exited() -> void:
@@ -69,6 +87,15 @@ func _on_MouseSelectArea_mouse_exited() -> void:
 
 func _on_MouseHoverArea_mouse_entered() -> void:
 	mouse_over = true
+	if !mousehover_ignore:
+		grow_card()
+
+func _on_MouseHoverArea_mouse_exited() -> void:
+	mouse_over = false
+	if !mousehover_ignore:
+		shrink_card()
+
+func grow_card() -> void:
 	if is_active:
 		growTween.stop_all()
 		growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2(growScale, growScale), growTime, growTrans, growEase)
@@ -80,8 +107,7 @@ func _on_MouseHoverArea_mouse_entered() -> void:
 		growTween.interpolate_property(self, "rotation", rotation, 0, growTime, growTrans, growEase)
 		growTween.start()
 
-func _on_MouseHoverArea_mouse_exited() -> void:
-	mouse_over = false
+func shrink_card() -> void:
 	growTween.stop_all()
 	growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2.ONE, growTime, growTrans, growEase)
 	growTween.interpolate_property(self, "rotation", rotation, 0, growTime, growTrans, growEase)

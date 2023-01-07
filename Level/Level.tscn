@@ -1,7 +1,44 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Graphics/Background/moon0000.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Background/landscape0000.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Background/portal0000.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Background/land0000.png" type="Texture" id=5]
+[ext_resource path="res://Level/Stall.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Level/SpiritLantern.tscn" type="PackedScene" id=7]
 
 [node name="Level" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Landscape" type="Sprite" parent="Background"]
+position = Vector2( 960, 540 )
+texture = ExtResource( 3 )
+
+[node name="Moon" type="Sprite" parent="Background/Landscape"]
+show_behind_parent = true
+texture = ExtResource( 2 )
+
+[node name="Portal" type="Sprite" parent="Background/Landscape"]
+show_behind_parent = true
+position = Vector2( 130, -264 )
+texture = ExtResource( 4 )
+
+[node name="Land" type="Sprite" parent="Background/Landscape"]
+position = Vector2( 0, -65 )
+texture = ExtResource( 5 )
+
+[node name="Stall" parent="Background/Landscape/Land" instance=ExtResource( 6 )]
+position = Vector2( -636, 342 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="Stall2" parent="Background/Landscape/Land" instance=ExtResource( 6 )]
+position = Vector2( 638, 342 )
+scale = Vector2( 0.8, 0.8 )
+
+[node name="SpiritLantern" parent="Background/Landscape/Land" instance=ExtResource( 7 )]
+position = Vector2( -422, 322 )
+scale = Vector2( 0.5, 0.5 )
 
 [node name="HUD" parent="." instance=ExtResource( 1 )]

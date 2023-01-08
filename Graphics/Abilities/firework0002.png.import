@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/portal0000.png-a0e9267245049504f4ff55ac418468e5.stex"
+path="res://.import/firework0002.png-4179ab008c61de414c33773eeae47a97.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Background/portal0000.png"
-dest_files=[ "res://.import/portal0000.png-a0e9267245049504f4ff55ac418468e5.stex" ]
+source_file="res://Graphics/Abilities/firework0002.png"
+dest_files=[ "res://.import/firework0002.png-4179ab008c61de414c33773eeae47a97.stex" ]
 
 [params]
 

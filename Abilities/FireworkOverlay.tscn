@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Graphics/Abilities/fireworktemplate0000.png" type="Texture" id=1]
+
+[node name="FireworkOverlay" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 1, 1, 1, 0.513726 )
+texture = ExtResource( 1 )

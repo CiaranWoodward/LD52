@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Lose Theme.ogg-c45761590dd74ee373c4ce530732536c.oggstr"
+
+[deps]
+
+source_file="res://Music/Lose Theme.ogg"
+dest_files=[ "res://.import/Lose Theme.ogg-c45761590dd74ee373c4ce530732536c.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

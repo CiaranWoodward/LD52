@@ -1,12 +1,245 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Level/UI/HUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/Background/moon0000.png" type="Texture" id=2]
 [ext_resource path="res://Graphics/Background/landscape0000.png" type="Texture" id=3]
 [ext_resource path="res://Graphics/Background/portal0000.png" type="Texture" id=4]
 [ext_resource path="res://Graphics/Background/land0000.png" type="Texture" id=5]
 [ext_resource path="res://Level/Stall.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Level/SpiritLantern.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Graphics/Background/left10000.png" type="Texture" id=8]
+[ext_resource path="res://Graphics/Background/left20000.png" type="Texture" id=9]
+[ext_resource path="res://Graphics/Background/left30000.png" type="Texture" id=10]
+[ext_resource path="res://Graphics/Background/right10000.png" type="Texture" id=11]
+[ext_resource path="res://Graphics/Background/lanternglow0000.png" type="Texture" id=12]
+[ext_resource path="res://Graphics/Background/right20000.png" type="Texture" id=13]
+[ext_resource path="res://Graphics/Background/right30000.png" type="Texture" id=14]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 6.60012e-43, 0.150838, 0.659218, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Glow1"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Left/1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 2.2 ),
+"transitions": PoolRealArray( 1.51572, 1.93187, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.509804 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Right/1:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 1.3, 2.1 ),
+"transitions": PoolRealArray( 1.62451, 1.8025, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.470588 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Left/1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Right/1:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Glow2"
+length = 3.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Left/2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3 ),
+"transitions": PoolRealArray( 2.21914, 1.51572, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.780392 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Right/2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9, 1.6 ),
+"transitions": PoolRealArray( 1.51572, 2.07053, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.870588 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Left/2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Right/2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Glow3"
+length = 4.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Left/3:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.3, 2.6 ),
+"transitions": PoolRealArray( 1.51572, 1.86607, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.611765 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Right/3:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.3, 3.7 ),
+"transitions": PoolRealArray( 1.56917, 1.7411, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.568627 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Left/3:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Right/3:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "PortalClose"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Landscape/Portal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 26, -261 ), Vector2( 413, -534 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/Landscape/Spawn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -14, -248 ), Vector2( 169, -356 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Landscape/Portal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 413, -534 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/Landscape/Spawn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 107, -321 ) ]
+}
 
 [node name="Level" type="Node2D"]
 
@@ -22,11 +255,15 @@ texture = ExtResource( 2 )
 
 [node name="Portal" type="Sprite" parent="Background/Landscape"]
 show_behind_parent = true
-position = Vector2( 130, -264 )
+position = Vector2( 413, -534 )
 texture = ExtResource( 4 )
 
+[node name="Spawn" type="Position2D" parent="Background/Landscape"]
+position = Vector2( 107, -321 )
+z_index = 200
+
 [node name="Land" type="Sprite" parent="Background/Landscape"]
-position = Vector2( 0, -65 )
+position = Vector2( 0, -39 )
 texture = ExtResource( 5 )
 
 [node name="Stall" parent="Background/Landscape/Land" instance=ExtResource( 6 )]
@@ -41,4 +278,91 @@ scale = Vector2( 0.8, 0.8 )
 position = Vector2( -422, 322 )
 scale = Vector2( 0.5, 0.5 )
 
+[node name="Crowd" type="Node2D" parent="."]
+modulate = Color( 1, 0.901961, 0, 1 )
+
+[node name="Left" type="Node2D" parent="Crowd"]
+position = Vector2( 495, 922 )
+
+[node name="People" type="CPUParticles2D" parent="Crowd/Left"]
+position = Vector2( -180, 34 )
+amount = 60
+lifetime = 5.0
+preprocess = 258.72
+texture = ExtResource( 12 )
+emission_shape = 2
+emission_rect_extents = Vector2( 320, 60 )
+direction = Vector2( 0, 0 )
+spread = 90.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 0.5
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+scale_amount = 0.08
+scale_amount_random = 0.02
+color = Color( 1, 0.917647, 0.858824, 0.635294 )
+color_ramp = SubResource( 1 )
+
+[node name="1" type="Sprite" parent="Crowd/Left"]
+texture = ExtResource( 8 )
+
+[node name="2" type="Sprite" parent="Crowd/Left"]
+texture = ExtResource( 9 )
+
+[node name="3" type="Sprite" parent="Crowd/Left"]
+texture = ExtResource( 10 )
+
+[node name="Right" type="Node2D" parent="Crowd"]
+position = Vector2( 1457, 924 )
+
+[node name="People" type="CPUParticles2D" parent="Crowd/Right"]
+position = Vector2( 112, 26 )
+amount = 60
+lifetime = 5.0
+preprocess = 258.72
+texture = ExtResource( 12 )
+emission_shape = 2
+emission_rect_extents = Vector2( 320, 60 )
+direction = Vector2( 0, 0 )
+spread = 90.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 0.5
+angular_velocity = 100.0
+angular_velocity_random = 1.0
+scale_amount = 0.08
+scale_amount_random = 0.02
+color = Color( 1, 0.917647, 0.858824, 0.635294 )
+color_ramp = SubResource( 1 )
+
+[node name="1" type="Sprite" parent="Crowd/Right"]
+texture = ExtResource( 11 )
+
+[node name="2" type="Sprite" parent="Crowd/Right"]
+texture = ExtResource( 13 )
+
+[node name="3" type="Sprite" parent="Crowd/Right"]
+texture = ExtResource( 14 )
+
+[node name="1" type="AnimationPlayer" parent="Crowd"]
+autoplay = "Glow1"
+anims/Glow1 = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="2" type="AnimationPlayer" parent="Crowd"]
+autoplay = "Glow2"
+anims/Glow2 = SubResource( 4 )
+anims/RESET = SubResource( 5 )
+
+[node name="3" type="AnimationPlayer" parent="Crowd"]
+root_node = NodePath("../2")
+autoplay = "Glow3"
+anims/Glow3 = SubResource( 6 )
+anims/RESET = SubResource( 7 )
+
 [node name="HUD" parent="." instance=ExtResource( 1 )]
+
+[node name="Portal" type="AnimationPlayer" parent="."]
+anims/PortalClose = SubResource( 8 )
+anims/RESET = SubResource( 9 )

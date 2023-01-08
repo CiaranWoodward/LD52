@@ -245,7 +245,7 @@ graph_offset = Vector2( -38, -32 )
 [node name="Lantern" type="Node2D" parent="."]
 
 [node name="Outline" type="Sprite" parent="Lantern"]
-position = Vector2( 0, 21.3948 )
+position = Vector2( 0, -28.816 )
 texture = ExtResource( 2 )
 
 [node name="Fill" type="Sprite" parent="Lantern/Outline"]
@@ -254,7 +254,7 @@ show_behind_parent = true
 texture = ExtResource( 1 )
 
 [node name="Glow" type="Sprite" parent="Lantern/Outline/Fill"]
-self_modulate = Color( 1, 0.384557, 0, 0.936082 )
+self_modulate = Color( 1, 0.4, 0, 1 )
 show_behind_parent = true
 texture = ExtResource( 3 )
 

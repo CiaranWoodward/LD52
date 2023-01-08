@@ -12,3 +12,6 @@ func coin_cost():
 
 func spirit_cost():
 	return 2
+
+func max_upgrade_level():
+	return 0

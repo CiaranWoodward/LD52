@@ -13,7 +13,10 @@ func _card_changed(_old_card, new_card: Node2D):
 	else:
 		visible = true
 		offset = new_card.global_position
-		$UpgradeCard/Card.set_type(new_card.get_type())
+		var card = $UpgradeCard/Card
+		card.set_type(new_card.get_type())
+		var upgrade_possible = card.upgrade_level() < card.max_upgrade_level()
+		$UpgradeCard.visible = upgrade_possible
 
 func _deck_changed(_ignored):
 	$DiscardButton.visible = Global.deck.size() > 3

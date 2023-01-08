@@ -81,6 +81,12 @@ func coin_cost():
 
 func spirit_cost():
 	return typeobj.spirit_cost()
+	
+func max_upgrade_level():
+	return typeobj.max_upgrade_level()
+
+func upgrade_level():
+	return typeobj.upgrade_level
 
 func set_active(active: bool):
 	is_active = active

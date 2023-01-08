@@ -450,7 +450,7 @@ anims/PortalClose = SubResource( 8 )
 anims/RESET = SubResource( 9 )
 
 [node name="MoonCrane" parent="." instance=ExtResource( 17 )]
-position = Vector2( 1300, 621 )
+position = Vector2( 927, 235 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Fox" parent="." instance=ExtResource( 20 )]

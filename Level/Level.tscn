@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Level/UI/HUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/Background/moon0000.png" type="Texture" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://Graphics/Background/lanternglow0000.png" type="Texture" id=12]
 [ext_resource path="res://Graphics/Background/right20000.png" type="Texture" id=13]
 [ext_resource path="res://Graphics/Background/right30000.png" type="Texture" id=14]
+[ext_resource path="res://Graphics/Background/pole0000.png" type="Texture" id=15]
+[ext_resource path="res://Abilities/FirecrackerOverlay.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Abilities/MoonCrane.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Abilities/CraneOverlay.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 6.60012e-43, 0.150838, 0.659218, 1 )
@@ -266,6 +270,47 @@ z_index = 200
 position = Vector2( 0, -39 )
 texture = ExtResource( 5 )
 
+[node name="Poles" type="Node2D" parent="Background/Landscape/Land"]
+
+[node name="Left" type="Sprite" parent="Background/Landscape/Land/Poles"]
+self_modulate = Color( 0.635294, 0.635294, 0.635294, 1 )
+position = Vector2( -872, 239 )
+texture = ExtResource( 15 )
+
+[node name="Hang" type="Position2D" parent="Background/Landscape/Land/Poles/Left"]
+position = Vector2( 47, -133 )
+
+[node name="FirecrackerOverlay" parent="Background/Landscape/Land/Poles/Left/Hang" instance=ExtResource( 16 )]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Perch" type="Position2D" parent="Background/Landscape/Land/Poles/Left"]
+position = Vector2( -28, -167 )
+
+[node name="CraneOverlay" parent="Background/Landscape/Land/Poles/Left/Perch" instance=ExtResource( 18 )]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Right" type="Sprite" parent="Background/Landscape/Land/Poles"]
+self_modulate = Color( 0.635294, 0.635294, 0.635294, 1 )
+position = Vector2( 874, 239 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 15 )
+
+[node name="Hang" type="Position2D" parent="Background/Landscape/Land/Poles/Right"]
+position = Vector2( 46, -134 )
+rotation = 3.14159
+scale = Vector2( -1, -1 )
+
+[node name="FirecrackerOverlay" parent="Background/Landscape/Land/Poles/Right/Hang" instance=ExtResource( 16 )]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Perch" type="Position2D" parent="Background/Landscape/Land/Poles/Right"]
+position = Vector2( -28, -167 )
+rotation = 3.14159
+scale = Vector2( -1, -1 )
+
+[node name="CraneOverlay" parent="Background/Landscape/Land/Poles/Right/Perch" instance=ExtResource( 18 )]
+scale = Vector2( 0.5, 0.5 )
+
 [node name="Stall" parent="Background/Landscape/Land" instance=ExtResource( 6 )]
 position = Vector2( -636, 342 )
 scale = Vector2( 0.8, 0.8 )
@@ -366,3 +411,7 @@ anims/RESET = SubResource( 7 )
 [node name="Portal" type="AnimationPlayer" parent="."]
 anims/PortalClose = SubResource( 8 )
 anims/RESET = SubResource( 9 )
+
+[node name="MoonCrane" parent="." instance=ExtResource( 17 )]
+position = Vector2( 463, 422 )
+scale = Vector2( 0.5, 0.5 )

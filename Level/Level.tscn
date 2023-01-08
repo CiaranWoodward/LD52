@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Level/UI/HUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/Background/moon0000.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Graphics/Background/right30000.png" type="Texture" id=14]
 [ext_resource path="res://Graphics/Background/pole0000.png" type="Texture" id=15]
 [ext_resource path="res://Abilities/Firecracker.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Abilities/MoonCrane.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 6.60012e-43, 0.150838, 0.659218, 1 )
@@ -385,3 +386,7 @@ anims/RESET = SubResource( 7 )
 [node name="Portal" type="AnimationPlayer" parent="."]
 anims/PortalClose = SubResource( 8 )
 anims/RESET = SubResource( 9 )
+
+[node name="MoonCrane" parent="." instance=ExtResource( 17 )]
+position = Vector2( 927, 332 )
+scale = Vector2( 0.5, 0.5 )

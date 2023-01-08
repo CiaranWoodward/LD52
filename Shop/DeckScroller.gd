@@ -10,6 +10,8 @@ var target_scroll = 0.0
 func _ready() -> void:
 	add_child(scrollTween)
 	get_v_scrollbar().rect_scale.y = 0
+	Global.connect("card_added", self, "scroll_to_bottom")
+	Global.connect("card_removed", self, "scroll_to_bottom")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -32,9 +34,12 @@ func _input(event: InputEvent) -> void:
 func _scroll_done():
 	target_scroll = scroll_vertical
 
-func animate_scroll(scrollDiff):
+func scroll_to_bottom(_nothing=null):
+	animate_scroll($DeckContainer.rect_size.y - scroll_vertical, 0.3)
+
+func animate_scroll(scrollDiff, time=0.1):
 	target_scroll += scrollDiff
 	scrollTween.stop_all()
-	scrollTween.interpolate_property(self, "scroll_vertical", scroll_vertical, target_scroll, 0.1, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	scrollTween.interpolate_callback(self, 0.1, "_scroll_done")
+	scrollTween.interpolate_property(self, "scroll_vertical", scroll_vertical, target_scroll, time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
+	scrollTween.interpolate_callback(self, time, "_scroll_done")
 	scrollTween.start()

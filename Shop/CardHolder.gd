@@ -15,3 +15,8 @@ func set_card(card):
 	card.set_rotation(0)
 	card.growScale = grow_scale
 	card.growScaleInactive = grow_scale_inactive
+
+func ch_remove_self():
+	$CardPlace/CardPoint.remove_child($CardPlace/CardPoint/Card)
+	get_parent().remove_child(self)
+	queue_free()

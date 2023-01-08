@@ -2,6 +2,8 @@ extends Node
 
 signal unhovered_card
 signal coin_changed(new_coin)
+signal card_added(new_card)
+signal card_removed(old_card)
 
 var cheer = 0.1
 var spirit = int(0)
@@ -32,6 +34,15 @@ func add_card_to_deck(type):
 	var newcard = card_scene.instance()
 	newcard.set_type(type)
 	deck.append(newcard)
+	emit_signal("card_added", newcard)
+
+func remove_card_from_deck(card):
+	var idx = deck.find(card)
+	if idx == -1:
+		return
+	deck.remove(idx)
+	emit_signal("card_removed", card)
+	card.queue_free()
 
 func remove_deck_from_tree():
 	for card in deck:

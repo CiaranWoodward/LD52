@@ -56,9 +56,8 @@ func _cards_added():
 	adding_cards = false
 	emit_signal("cards_added")
 
-func get_next_card() -> Card:
+func get_next_card():
 	var ccount = get_count()
 	if ccount == 0:
 		return null
-	var retcard: Card = get_child(ccount-1)
-	return retcard
+	return get_child(ccount-1)

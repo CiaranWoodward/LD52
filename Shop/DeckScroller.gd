@@ -13,6 +13,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	_handle_actions()
+
+# Bunch of functions to re-implement scrolling since we're being naughty with mixing control nodes and node2Ds
+func _handle_actions():
 	if Input.is_action_just_pressed("scroll_down"):
 		animate_scroll(scroll_speed)
 	elif Input.is_action_just_pressed("scroll_up"):

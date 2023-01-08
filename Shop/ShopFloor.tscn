@@ -1,14 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/e0000.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Shop/ShopFloor.gd" type="Script" id=4]
 
 [node name="ShopFloor" type="Control"]
 margin_right = 110.0
 margin_bottom = 161.4
 rect_min_size = Vector2( 1320, 300 )
 mouse_filter = 2
+script = ExtResource( 4 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 self_modulate = Color( 0.694118, 0.901961, 0.643137, 1 )
@@ -39,6 +41,8 @@ rotation = -0.12094
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Firework" instance=ExtResource( 1 )]
+editor_placed_card = true
+editor_card_type = 1
 growScale = 1.5
 
 [node name="Firecracker" type="Node2D" parent="."]
@@ -47,6 +51,8 @@ rotation = 0.0171473
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Firecracker" instance=ExtResource( 1 )]
+editor_placed_card = true
+editor_card_type = 2
 growScale = 1.5
 
 [node name="Lantern" type="Node2D" parent="."]
@@ -55,6 +61,7 @@ rotation = -0.0716459
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Lantern" instance=ExtResource( 1 )]
+editor_placed_card = true
 growScale = 1.5
 
 [node name="MoonCrane" type="Node2D" parent="."]
@@ -63,6 +70,8 @@ rotation = -0.0717576
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="MoonCrane" instance=ExtResource( 1 )]
+editor_placed_card = true
+editor_card_type = 6
 growScale = 1.5
 
 [node name="Dragon" type="Node2D" parent="."]
@@ -71,6 +80,8 @@ rotation = 0.000586942
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Dragon" instance=ExtResource( 1 )]
+editor_placed_card = true
+editor_card_type = 0
 growScale = 1.5
 
 [node name="LightStall" type="Node2D" parent="."]
@@ -79,6 +90,8 @@ rotation = 0.0570701
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="LightStall" instance=ExtResource( 1 )]
+editor_placed_card = true
+editor_card_type = 4
 growScale = 1.5
 
 [node name="CoinStall" type="Node2D" parent="."]
@@ -87,4 +100,6 @@ rotation = -0.0692535
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="CoinStall" instance=ExtResource( 1 )]
+editor_placed_card = true
+editor_card_type = 5
 growScale = 1.5

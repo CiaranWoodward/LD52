@@ -28,7 +28,7 @@ func add_fresh_deck_to_discard_pile():
 func card_clicked(card):
 	discard(card)
 
-func discard(card: Card):
+func discard(card):
 	card.is_active = false
 	card.reseat_to(_discard, 0.0, _discard.get_next_offset(), _discard.get_random_rotation(), funcref(self, "_card_discarded"))
 

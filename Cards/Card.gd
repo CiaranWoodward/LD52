@@ -1,7 +1,10 @@
 extends Node2D
-class_name Card
 
 signal card_clicked(card)
+
+# Only for editor-placed cards!
+export(bool) var editor_placed_card = false
+export(Global.CardType) var editor_card_type = Global.CardType.LANTERN
 
 export(Global.TransitionType) var growTrans = Global.TransitionType.EXPO
 export(Global.EaseType) var growEase = Global.EaseType.OUT
@@ -33,6 +36,7 @@ var reseat_rotationoffset = 0
 var reseat_callback = null
 export var is_active = true setget set_active
 var mousehover_ignore = false setget set_mousehover_ignore
+var typeobj = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -40,6 +44,8 @@ func _ready() -> void:
 	add_child(reseatTween)
 	set_active(is_active)
 	Global.connect("unhovered_card", self, "_other_card_unhovered")
+	if editor_placed_card:
+		set_type(editor_card_type)
 
 func set_type(type):
 	var newtype
@@ -62,6 +68,16 @@ func set_type(type):
 		_:
 			assert(false)
 	$Scaler/CardFront.add_child(newtype)
+	typeobj = newtype
+
+func get_type():
+	return typeobj.card_type()
+
+func coin_cost():
+	return typeobj.coin_cost()
+
+func spirit_cost():
+	return typeobj.spirit_cost()
 
 func set_active(active: bool):
 	is_active = active
@@ -163,13 +179,13 @@ func grow_card() -> void:
 		growTween.interpolate_property(self, "global_rotation", global_rotation, 0, growTime, growTrans, growEase)
 		growTween.start()
 		z_index = 1
+		$SoundHover.pitch_scale = rand_range(1.3, 1.8)
+		$SoundHover.play()
 	else:
 		growTween.stop_all()
 		growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2(growScaleInactive, growScaleInactive), growTime, growTrans, growEase)
 		growTween.interpolate_property(self, "rotation", rotation, 0, growTime, growTrans, growEase)
 		growTween.start()
-	$SoundHover.pitch_scale = rand_range(1.3, 1.8)
-	$SoundHover.play()
 
 func shrink_card() -> void:
 	Global.unhover_card(self)

@@ -9,13 +9,13 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
-"class": "Card",
+"base": "Node",
+"class": "CardType",
 "language": "GDScript",
-"path": "res://Cards/Card.gd"
+"path": "res://Cards/CardType.gd"
 } ]
 _global_script_class_icons={
-"Card": ""
+"CardType": ""
 }
 
 [application]

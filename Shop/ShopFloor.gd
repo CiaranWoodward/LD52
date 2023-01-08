@@ -2,6 +2,7 @@ extends Control
 
 export var unaffordable_modulation = Color(0.5, 0.5, 0.5)
 
+
 onready var shop_cards = get_tree().get_nodes_in_group("shop_cards")
 
 # Called when the node enters the scene tree for the first time.
@@ -10,6 +11,7 @@ func _ready() -> void:
 	_coin_changed(Global.coin)
 	for card in shop_cards:
 		card.connect("card_clicked", self, "_card_clicked")
+		card.selectable = false
 
 func _coin_changed(coin):
 	$NinePatchRect/Gold.text = String(coin)

@@ -44,6 +44,7 @@ scale = Vector2( 2, 2 )
 editor_placed_card = true
 editor_card_type = 1
 growScale = 1.5
+selectable = false
 
 [node name="Firecracker" type="Node2D" parent="."]
 position = Vector2( 309, 143 )
@@ -54,6 +55,7 @@ scale = Vector2( 2, 2 )
 editor_placed_card = true
 editor_card_type = 2
 growScale = 1.5
+selectable = false
 
 [node name="Lantern" type="Node2D" parent="."]
 position = Vector2( 445, 143 )
@@ -63,6 +65,7 @@ scale = Vector2( 2, 2 )
 [node name="Card" parent="Lantern" groups=["shop_cards"] instance=ExtResource( 1 )]
 editor_placed_card = true
 growScale = 1.5
+selectable = false
 
 [node name="MoonCrane" type="Node2D" parent="."]
 position = Vector2( 647, 143 )
@@ -73,6 +76,7 @@ scale = Vector2( 2, 2 )
 editor_placed_card = true
 editor_card_type = 6
 growScale = 1.5
+selectable = false
 
 [node name="Dragon" type="Node2D" parent="."]
 position = Vector2( 785, 143 )
@@ -83,6 +87,7 @@ scale = Vector2( 2, 2 )
 editor_placed_card = true
 editor_card_type = 0
 growScale = 1.5
+selectable = false
 
 [node name="LightStall" type="Node2D" parent="."]
 position = Vector2( 991, 143 )
@@ -93,6 +98,7 @@ scale = Vector2( 2, 2 )
 editor_placed_card = true
 editor_card_type = 4
 growScale = 1.5
+selectable = false
 
 [node name="CoinStall" type="Node2D" parent="."]
 position = Vector2( 1128, 143 )
@@ -103,3 +109,4 @@ scale = Vector2( 2, 2 )
 editor_placed_card = true
 editor_card_type = 5
 growScale = 1.5
+selectable = false

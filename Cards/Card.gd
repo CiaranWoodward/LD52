@@ -17,6 +17,9 @@ export(Global.EaseType) var reseatEase = Global.EaseType.IN
 export var reseatTimeLow = 0.4
 export var reseatTimeHigh = 0.6
 
+export var ignore_mouse = false
+export var selectable = true
+
 onready var growTween = Tween.new()
 onready var reseatTween = Tween.new()
 
@@ -90,6 +93,7 @@ func set_active(active: bool):
 	else:
 		$Scaler/CardBack.visible = true
 		Global.unhover_card(self)
+		Global.unselect_card(self)
 		z_index = 0
 		if mouse_over && !mousehover_ignore:
 			grow_card()
@@ -142,7 +146,7 @@ func _reseat_done():
 		reseat_callback.call_deferred("call_func")
 	
 func _on_MouseSelectArea_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if !is_active:
+	if !is_active || ignore_mouse:
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT:
@@ -153,17 +157,21 @@ func _on_MouseSelectArea_input_event(_viewport: Node, event: InputEvent, _shape_
 					$SoundClick.pitch_scale = rand_range(1, 1.1)
 					$SoundClick.play()
 					emit_signal("card_clicked", self)
+					if selectable:
+						Global.selected_card = self
 				moused_down = false
 
 func _on_MouseSelectArea_mouse_exited() -> void:
 	moused_down = false
 
 func _on_MouseHoverArea_mouse_entered() -> void:
+	if ignore_mouse: return
 	mouse_over = true
 	if !mousehover_ignore:
 		grow_card()
 
 func _on_MouseHoverArea_mouse_exited() -> void:
+	if ignore_mouse: return
 	mouse_over = false
 	if !mousehover_ignore:
 		shrink_card()
@@ -188,9 +196,15 @@ func grow_card() -> void:
 		growTween.start()
 
 func shrink_card() -> void:
+	if Global.selected_card == self:
+		return
 	Global.unhover_card(self)
 	growTween.stop_all()
 	growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2.ONE, growTime, growTrans, growEase)
 	growTween.interpolate_property(self, "rotation", rotation, 0, growTime, growTrans, growEase)
 	growTween.start()
 	z_index = 0
+
+func selected_card_changed(oldcard, newcard):
+	if oldcard == self && newcard != self:
+		shrink_card()

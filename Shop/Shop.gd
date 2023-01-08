@@ -8,3 +8,6 @@ func _ready() -> void:
 
 func spawn_global_deck():
 	deck_container.spawn_global_deck()
+
+func _on_NextLevel_pressed() -> void:
+	print("Next Level!")

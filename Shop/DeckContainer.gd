@@ -1,6 +1,7 @@
 extends GridContainer
 
 onready var card_holder_scene = preload("res://Shop/CardHolder.tscn")
+var card_upgrade_overlay = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

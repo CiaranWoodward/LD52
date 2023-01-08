@@ -1,20 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/e0000.png" type="Texture" id=2]
+[ext_resource path="res://Shop/CardSelect.gd" type="Script" id=3]
+[ext_resource path="res://Utils/GlowParent.tscn" type="PackedScene" id=4]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="CardSelect" type="CanvasLayer"]
 layer = 100
+script = ExtResource( 3 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.431373 )
-margin_left = -50.0
-margin_top = -70.7
-margin_right = 50.0
-margin_bottom = 70.7
+margin_left = -99.0
+margin_top = -140.0
+margin_right = 1.0
+margin_bottom = 1.39999
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 100, 141.4 )
+rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 patch_margin_left = 50
 
@@ -23,10 +28,10 @@ self_modulate = Color( 0.784314, 0.54902, 0.54902, 1 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -45.0
-margin_top = -1002.0
-margin_right = -1875.0
-margin_bottom = -982.0
+margin_left = -44.0
+margin_top = -924.0
+margin_right = -1874.0
+margin_bottom = -904.0
 grow_vertical = 0
 rect_scale = Vector2( 0.99733, 1 )
 texture_normal = ExtResource( 2 )
@@ -41,10 +46,10 @@ valign = 1
 
 [node name="UpgradeCard" type="NinePatchRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0.431373 )
-margin_left = -50.0
-margin_top = -226.0
-margin_right = 50.0
-margin_bottom = -84.6
+margin_left = -99.0
+margin_top = -427.0
+margin_right = 101.0
+margin_bottom = -153.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 100, 141.4 )
@@ -52,8 +57,12 @@ texture = ExtResource( 2 )
 patch_margin_left = 50
 
 [node name="Card" parent="UpgradeCard" instance=ExtResource( 1 )]
-position = Vector2( 50, 70 )
-scale = Vector2( 1.53337, 1.53337 )
+position = Vector2( 100, 135 )
+scale = Vector2( 3.1, 3.1 )
+growScale = 1.1
+ignore_mouse = true
+
+[node name="GlowParent" parent="UpgradeCard/Card" instance=ExtResource( 4 )]
 
 [node name="UpgradeButton" type="TextureButton" parent="UpgradeCard"]
 self_modulate = Color( 0.784314, 0.54902, 0.54902, 1 )

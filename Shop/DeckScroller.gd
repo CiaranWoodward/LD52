@@ -38,6 +38,7 @@ func scroll_to_bottom(_nothing=null):
 	animate_scroll($DeckContainer.rect_size.y - scroll_vertical, 0.3)
 
 func animate_scroll(scrollDiff, time=0.1):
+	Global.set_selected_card(null)
 	target_scroll += scrollDiff
 	scrollTween.stop_all()
 	scrollTween.interpolate_property(self, "scroll_vertical", scroll_vertical, target_scroll, time, Tween.TRANS_SINE, Tween.EASE_IN_OUT)

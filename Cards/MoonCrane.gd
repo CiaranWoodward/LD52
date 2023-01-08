@@ -1,7 +1,7 @@
 extends CardType
 
 func card_type():
-	return Global.CardType.DRAGON
+	return Global.CardType.CRANE
 
 func coin_cost():
 	return 8

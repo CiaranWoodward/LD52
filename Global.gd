@@ -4,6 +4,7 @@ signal unhovered_card
 signal coin_changed(new_coin)
 signal card_added(new_card)
 signal card_removed(old_card)
+signal change_selected_card(old, new)
 
 var cheer = 0.1
 var spirit = int(0)
@@ -11,6 +12,7 @@ var coin = int(10) setget set_coin
 var portal_size = 1.0
 
 var hovered_card = null
+var selected_card = null setget set_selected_card
 
 var deck = []
 
@@ -29,6 +31,10 @@ func _ready() -> void:
 	add_card_to_deck(CardType.LANTERN)
 	add_card_to_deck(CardType.CAKE_STALL)
 	add_card_to_deck(CardType.CRANE)
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		set_selected_card(null)
 
 func add_card_to_deck(type):
 	var newcard = card_scene.instance()
@@ -66,6 +72,31 @@ func unhover_card(card):
 	if card == hovered_card:
 		hovered_card = null
 		emit_signal("unhovered_card")
+
+func _release_hovercard_if_not_still_hovered():
+	if is_instance_valid(hovered_card):
+		if !hovered_card.mouse_over:
+			unhover_card(hovered_card)
+
+func set_selected_card(card):
+	if card == selected_card:
+		return
+	if is_instance_valid(card):
+		_release_hovercard_if_not_still_hovered()
+		if !hover_card(card):
+			return
+	else:
+		unhover_card(hovered_card)
+	var old_card = selected_card
+	selected_card = card
+	if is_instance_valid(old_card):
+		unhover_card(old_card)
+		old_card.shrink_card()
+	emit_signal("change_selected_card", old_card, card)
+
+func unselect_card(card):
+	if card == selected_card:
+		set_selected_card(null)
 
 func set_coin(newval):
 	coin = newval

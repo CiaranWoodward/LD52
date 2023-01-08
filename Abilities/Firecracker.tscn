@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Graphics/Abilities/cracker0000.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Abilities/crackertie0000.png" type="Texture" id=2]
 [ext_resource path="res://Graphics/Abilities/crackertop0000.png" type="Texture" id=3]
 [ext_resource path="res://Graphics/Abilities/boompart0000.png" type="Texture" id=4]
 [ext_resource path="res://Graphics/Abilities/soundpart0000.png" type="Texture" id=5]
+[ext_resource path="res://Sounds/LongCrackle.wav" type="AudioStream" id=6]
 
 [sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( -1.13166e+23, 0, 0.139665, 0.826816, 1 )
@@ -164,6 +165,23 @@ tracks/11/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath("SoundCrackle")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ 0.0 ],
+"method": "play"
+}, {
+"args": [  ],
+"method": "stop"
+} ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -524,3 +542,7 @@ texture = ExtResource( 1 )
 playback_speed = 0.2
 anims/Crackle = SubResource( 4 )
 anims/RESET = SubResource( 5 )
+
+[node name="SoundCrackle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+bus = "Explosions"

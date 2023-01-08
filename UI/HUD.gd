@@ -6,14 +6,24 @@ onready var _hand = $Hand
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	randomize()
-	$"Hand/1/Card".connect("card_clicked", self, "card_clicked")
-	$"Hand/2/Card2".connect("card_clicked", self, "card_clicked")
-	$"Hand/3/Card3".connect("card_clicked", self, "card_clicked")
-	$"DiscardPile/Card4".connect("card_clicked", self, "card_clicked")
-	$"DrawPile/Card5".connect("card_clicked", self, "card_clicked")
-	$"DrawPile/Card6".connect("card_clicked", self, "card_clicked")
 	_draw.connect("cards_added", self, "_draw_replaced")
+	add_fresh_deck_to_discard_pile()
+
+func add_fresh_deck_to_discard_pile():
+	# First remove all of the cards from the screen (this should just be the editor placeholders!)
+	Global.remove_all_children(_draw)
+	Global.remove_all_children(_discard)
+	_hand.drop_cards()
+	
+	# Then prepare and store the global deck in the discard pile
+	_discard.spawn_global_deck()
+	
+	# Connect the click
+	for card in Global.deck:
+		card.connect("card_clicked", self, "card_clicked")
+	
+	# Immediately start the shuffle to the Draw pile which will also fill the hand
+	replace_draw()
 
 func card_clicked(card):
 	discard(card)

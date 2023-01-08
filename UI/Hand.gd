@@ -29,3 +29,7 @@ func empty_slots() -> Array:
 		if child.get_child_count() == 0:
 			arr.append(child)
 	return arr
+
+func drop_cards():
+	for child in get_children():
+		Global.remove_all_children(child)

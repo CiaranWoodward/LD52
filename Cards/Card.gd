@@ -17,6 +17,14 @@ export var reseatTimeHigh = 0.6
 onready var growTween = Tween.new()
 onready var reseatTween = Tween.new()
 
+var card_dragon = preload("res://Cards/Dragon.tscn")
+var card_firecracker = preload("res://Cards/Firecracker.tscn")
+var card_firework = preload("res://Cards/Firework.tscn")
+var card_lantern = preload("res://Cards/Lantern.tscn")
+var card_lightstall = preload("res://Cards/LightStall.tscn")
+var card_mooncakestall = preload("res://Cards/MooncakeStall.tscn")
+var card_mooncrane = preload("res://Cards/MoonCrane.tscn")
+
 var mouse_over = false
 var moused_down = false
 var reseat_target = null
@@ -32,6 +40,28 @@ func _ready() -> void:
 	add_child(reseatTween)
 	set_active(is_active)
 	Global.connect("unhovered_card", self, "_other_card_unhovered")
+
+func set_type(type):
+	var newtype
+	Global.remove_all_children($Scaler/CardFront, true)
+	match type:
+		Global.CardType.DRAGON:
+			newtype = card_dragon.instance()
+		Global.CardType.FIRECRACKER:
+			newtype = card_firecracker.instance()
+		Global.CardType.FIREWORK:
+			newtype = card_firework.instance()
+		Global.CardType.LANTERN:
+			newtype = card_lantern.instance()
+		Global.CardType.LIGHT_STALL:
+			newtype = card_lightstall.instance()
+		Global.CardType.CAKE_STALL:
+			newtype = card_mooncakestall.instance()
+		Global.CardType.CRANE:
+			newtype = card_mooncrane.instance()
+		_:
+			assert(false)
+	$Scaler/CardFront.add_child(newtype)
 
 func set_active(active: bool):
 	is_active = active
@@ -114,8 +144,6 @@ func _on_MouseSelectArea_mouse_exited() -> void:
 
 func _on_MouseHoverArea_mouse_entered() -> void:
 	mouse_over = true
-	$SoundHover.pitch_scale = rand_range(1.3, 1.5)
-	$SoundHover.play()
 	if !mousehover_ignore:
 		grow_card()
 
@@ -140,6 +168,8 @@ func grow_card() -> void:
 		growTween.interpolate_property($Scaler, "scale", $Scaler.scale, Vector2(growScaleInactive, growScaleInactive), growTime, growTrans, growEase)
 		growTween.interpolate_property(self, "rotation", rotation, 0, growTime, growTrans, growEase)
 		growTween.start()
+	$SoundHover.pitch_scale = rand_range(1.3, 1.8)
+	$SoundHover.play()
 
 func shrink_card() -> void:
 	Global.unhover_card(self)

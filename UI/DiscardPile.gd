@@ -21,3 +21,12 @@ func get_next_offset() -> Vector2:
 
 func get_random_rotation() -> float:
 	return rand_range(-rand_rotation, rand_rotation)
+
+func spawn_global_deck():
+	Global.remove_deck_from_tree()
+	for card in Global.deck:
+		add_child(card)
+		card.is_active = false
+		card.position = get_next_offset()
+		card.rotation = get_random_rotation()
+		card.scale = Vector2.ONE

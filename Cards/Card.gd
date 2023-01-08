@@ -157,8 +157,10 @@ func _on_MouseSelectArea_input_event(_viewport: Node, event: InputEvent, _shape_
 					$SoundClick.pitch_scale = rand_range(1, 1.1)
 					$SoundClick.play()
 					emit_signal("card_clicked", self)
-					if selectable:
+					if selectable && Global.selected_card != self:
 						Global.selected_card = self
+					else:
+						Global.selected_card = null
 				moused_down = false
 
 func _on_MouseSelectArea_mouse_exited() -> void:

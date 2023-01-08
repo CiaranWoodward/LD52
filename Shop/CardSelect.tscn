@@ -85,3 +85,6 @@ anchor_bottom = 1.0
 text = "Upgrade"
 align = 1
 valign = 1
+
+[connection signal="pressed" from="DiscardButton" to="." method="_on_DiscardButton_pressed"]
+[connection signal="pressed" from="UpgradeCard/UpgradeButton" to="." method="_on_UpgradeButton_pressed"]

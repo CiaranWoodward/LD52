@@ -321,6 +321,8 @@ show_behind_parent = true
 texture = ExtResource( 2 )
 
 [node name="Bone1" type="Bone2D" parent="Skeleton2D/BoneTop"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 120, 0 )
 rest = Transform2D( 1, 0, 0, 1, 120, 0 )
 default_length = 20.0
@@ -373,6 +375,8 @@ scale_amount_curve = SubResource( 1 )
 color_ramp = SubResource( 2 )
 
 [node name="Bone2" type="Bone2D" parent="Skeleton2D/BoneTop/Bone1"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 100, 0 )
 rest = Transform2D( 1, 0, 0, 1, 100, 0 )
 default_length = 20.0
@@ -425,6 +429,8 @@ scale_amount_curve = SubResource( 1 )
 color_ramp = SubResource( 2 )
 
 [node name="Bone3" type="Bone2D" parent="Skeleton2D/BoneTop/Bone1/Bone2"]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 100, 0 )
 rest = Transform2D( 1, 0, 0, 1, 100, 0 )
 default_length = 20.0

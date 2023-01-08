@@ -23,7 +23,7 @@ func add_card_to_container(card):
 func remove_card_from_container(card):
 	if !is_a_parent_of(card):
 		return
-	var iter : Node2D = card.get_parent()
+	var iter = card.get_parent()
 	while is_instance_valid(iter):
 		if iter.has_method("ch_remove_self"):
 			iter.ch_remove_self()

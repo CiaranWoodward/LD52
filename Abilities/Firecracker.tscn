@@ -300,12 +300,10 @@ texture = ExtResource( 3 )
 [node name="Tie" type="Sprite" parent="Skeleton2D/BoneTop/Top"]
 self_modulate = Color( 1, 0.823529, 0.278431, 1 )
 show_behind_parent = true
-scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )
 
 [node name="Bone1" type="Bone2D" parent="Skeleton2D/BoneTop"]
 position = Vector2( 120, 0 )
-scale = Vector2( 1, 1 )
 rest = Transform2D( 1, 0, 0, 1, 120, 0 )
 default_length = 20.0
 __meta__ = {
@@ -358,7 +356,6 @@ color_ramp = SubResource( 2 )
 
 [node name="Bone2" type="Bone2D" parent="Skeleton2D/BoneTop/Bone1"]
 position = Vector2( 100, 0 )
-scale = Vector2( 1, 1 )
 rest = Transform2D( 1, 0, 0, 1, 100, 0 )
 default_length = 20.0
 __meta__ = {
@@ -411,7 +408,6 @@ color_ramp = SubResource( 2 )
 
 [node name="Bone3" type="Bone2D" parent="Skeleton2D/BoneTop/Bone1/Bone2"]
 position = Vector2( 100, 0 )
-scale = Vector2( 1, 1 )
 rest = Transform2D( 1, 0, 0, 1, 100, 0 )
 default_length = 20.0
 __meta__ = {
@@ -512,7 +508,6 @@ color_ramp = SubResource( 2 )
 
 [node name="Tip" type="Bone2D" parent="Skeleton2D/BoneTop/Bone1/Bone2/Bone3/Bone4"]
 position = Vector2( 100, 0 )
-scale = Vector2( 1, 1 )
 rest = Transform2D( 1, 0, 0, 1, 100, 0 )
 default_length = 1.0
 __meta__ = {
@@ -526,7 +521,6 @@ scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 1 )
 
 [node name="Crackle" type="AnimationPlayer" parent="."]
-autoplay = "Crackle"
 playback_speed = 0.2
 anims/Crackle = SubResource( 4 )
 anims/RESET = SubResource( 5 )

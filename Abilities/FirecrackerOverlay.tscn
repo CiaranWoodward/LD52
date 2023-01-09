@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Graphics/Abilities/crackertie0000.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Abilities/cracker0000.png" type="Texture" id=2]
 [ext_resource path="res://Graphics/Abilities/crackertop0000.png" type="Texture" id=3]
+[ext_resource path="res://Utils/GlowParent.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Abilities/FirecrackerOverlay.gd" type="Script" id=5]
 
-[node name="Node2D" type="Node2D"]
+[node name="FirecrackerOverlay" type="Node2D"]
 modulate = Color( 0.223529, 0.223529, 0.223529, 0.517647 )
+z_index = 1
+script = ExtResource( 5 )
 
 [node name="FirecrackerOverlay" type="Skeleton2D" parent="."]
 self_modulate = Color( 0.632813, 0.632813, 0.632813, 1 )
@@ -165,3 +169,8 @@ position = Vector2( 14, 1 )
 rotation = -1.61353
 scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 2 )
+
+[node name="GlowParent" parent="FirecrackerOverlay" instance=ExtResource( 4 )]
+scale = Vector2( 0.08, 0.08 )
+period = 0.3
+color = Color( 0.811765, 0.811765, 0.129412, 1 )

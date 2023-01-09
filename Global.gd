@@ -28,7 +28,7 @@ func _ready() -> void:
 	card_scene = load("res://Cards/Card.tscn")
 	randomize()
 	add_card_to_deck(CardType.FIREWORK)
-	add_card_to_deck(CardType.FIREWORK)
+	add_card_to_deck(CardType.FIRECRACKER)
 	add_card_to_deck(CardType.LANTERN)
 	add_card_to_deck(CardType.CAKE_STALL)
 	add_card_to_deck(CardType.CRANE)

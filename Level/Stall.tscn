@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Graphics/Stalls/lanterntop0000.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Stalls/mooncake10000.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Graphics/Stalls/lanternbot0000.png" type="Texture" id=4]
 [ext_resource path="res://Graphics/Stalls/mooncake20000.png" type="Texture" id=5]
 [ext_resource path="res://Graphics/Stalls/stall0000.png" type="Texture" id=6]
+[ext_resource path="res://Utils/GlowParent.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 6.85235e-43, 0.273743, 0.77095, 1 )
@@ -69,3 +70,9 @@ texture = ExtResource( 5 )
 
 [node name="Full" type="Sprite" parent="Sprite/Mooncake"]
 texture = ExtResource( 2 )
+
+[node name="GlowParent" parent="." instance=ExtResource( 7 )]
+scale = Vector2( 0.08, 0.08 )
+period = 0.3
+color = Color( 0.815686, 0.815686, 0.0901961, 1 )
+active = false

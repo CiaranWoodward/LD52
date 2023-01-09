@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Graphics/Background/landscape0000.png" type="Texture" id=1]
+[ext_resource path="res://Graphics/Background/moon0000.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Background/portal0000.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Background/land0000.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Background/start0000.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/Background/title0000.png" type="Texture" id=6]
+[ext_resource path="res://Graphics/Background/starthover0000.png" type="Texture" id=7]
+[ext_resource path="res://Graphics/Background/startclick0000.png" type="Texture" id=8]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 3.32841, 0, 0, Vector2( 0.49505, 1 ), -0.031125, -0.031125, 0, 0, Vector2( 1, 0 ), -3.67273, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.189944, 0.787709, 1 )
+colors = PoolColorArray( 1, 0.796078, 0, 0, 1, 0.796078, 0, 1, 1, 0.796078, 0, 1, 1, 0.796078, 0, 0 )
+
+[node name="Start" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Landscape" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 960, 540 )
+
+[node name="Moon" type="Sprite" parent="Landscape"]
+show_behind_parent = true
+texture = ExtResource( 2 )
+offset = Vector2( 960, 540 )
+
+[node name="Portal" type="Sprite" parent="Landscape"]
+show_behind_parent = true
+position = Vector2( 1036, 279 )
+texture = ExtResource( 3 )
+
+[node name="Title" type="Sprite" parent="Landscape"]
+position = Vector2( 960, 695 )
+texture = ExtResource( 6 )
+
+[node name="Land" type="Sprite" parent="Landscape"]
+position = Vector2( 960, 656 )
+texture = ExtResource( 4 )
+
+[node name="Start" type="TextureButton" parent="."]
+margin_left = 823.0
+margin_top = 860.0
+margin_right = 1174.0
+margin_bottom = 1040.0
+rect_scale = Vector2( 0.731111, 0.731111 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 7 )
+
+[node name="Explosion2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.8
+lifetime_randomness = 0.4
+emission_shape = 1
+emission_sphere_radius = 400.0
+gravity = Vector2( 0, 300 )
+angular_velocity = 720.0
+angular_velocity_random = 1.0
+angle_random = 1.0
+scale_amount = 8.0
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )

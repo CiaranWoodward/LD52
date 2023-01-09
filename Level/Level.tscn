@@ -695,12 +695,12 @@ anims/RESET = SubResource( 16 )
 [node name="EnemyZones" type="Node2D" parent="."]
 
 [node name="Relay1" parent="EnemyZones" instance=ExtResource( 17 )]
-position = Vector2( 116, 92 )
-size = Vector2( 200, 200 )
+position = Vector2( 69, 62 )
+size = Vector2( 500, 300 )
 
 [node name="Relay2" parent="EnemyZones" instance=ExtResource( 17 )]
-position = Vector2( 1582, 94 )
-size = Vector2( 200, 200 )
+position = Vector2( 1293, 79 )
+size = Vector2( 500, 300 )
 
 [node name="LeftStall" parent="EnemyZones" instance=ExtResource( 17 )]
 position = Vector2( 251, 785 )
@@ -726,3 +726,13 @@ type = "torment"
 position = Vector2( 61, 60 )
 size = Vector2( 1700, 600 )
 type = "cat"
+
+[node name="EscapeRight" parent="EnemyZones" instance=ExtResource( 17 )]
+position = Vector2( 1987, 550 )
+size = Vector2( 100, 300 )
+type = "escape"
+
+[node name="EscapeLeft" parent="EnemyZones" instance=ExtResource( 17 )]
+position = Vector2( -188, 575 )
+size = Vector2( 100, 300 )
+type = "escape"

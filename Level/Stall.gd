@@ -11,6 +11,7 @@ var decay_rate = 0.15
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.connect("change_selected_card", self, "_selected_card_changed")
+	add_to_group("stalls")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -21,6 +22,14 @@ func _process(delta: float) -> void:
 	if lantern_stock < 0.0:
 		lantern_stock = 0.0
 	update_stock()
+
+func steal(amount):
+	mooncake_stock -= amount
+	lantern_stock -= amount
+	if mooncake_stock < 0.0:
+		mooncake_stock = 0.0
+	if lantern_stock < 0.0:
+		lantern_stock = 0.0
 
 func update_stock():
 	if mooncake_stock == 0:
@@ -72,6 +81,9 @@ func is_stall_selected() -> bool:
 		type = Global.selected_card.card_type()
 		return true
 	return false
+
+func has_stock():
+	return mooncake_stock > 0 || lantern_stock > 0
 
 func _on_Area2D_mouse_entered() -> void:
 	mouse_over = true

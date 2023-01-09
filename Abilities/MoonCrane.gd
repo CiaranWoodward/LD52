@@ -15,7 +15,7 @@ func _process(delta: float) -> void:
 		var distance_covered = delta * speed
 		var distance_left = global_position.distance_to(target_pos)
 		var direction = global_position.direction_to(target_pos)
-		if distance_left <= (distance_covered + target.mooncrane_hit_range):
+		if distance_left <= target.mooncrane_hit_range:
 			explode()
 		global_position += direction * distance_covered
 	else:
@@ -53,7 +53,7 @@ func kill():
 
 func kill_target():
 	if is_instance_valid(target):
-		var distance_left = global_position.distance_to(target.global_position)
+		var distance_left = global_position.distance_to(target.target_position())
 		if distance_left <= target.mooncrane_hit_range:
 			target.damage(damage)
 

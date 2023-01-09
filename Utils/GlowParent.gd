@@ -4,6 +4,7 @@ export var period = 0.5
 export var color = Color(0.9, 0.9, 0.8)
 export var color2 = Color(1,1,1)
 export var active = true setget set_active
+export var one_shot = false
 
 onready var glow_tween = Tween.new()
 
@@ -39,3 +40,5 @@ func GlowDown():
 	glow_tween.interpolate_property(p, "modulate", p.modulate, color2, period, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	glow_tween.interpolate_callback(self, period, "GlowUp")
 	glow_tween.start()
+	if one_shot:
+		set_active(false)

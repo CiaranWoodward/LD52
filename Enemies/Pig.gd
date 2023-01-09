@@ -25,6 +25,7 @@ func _ready() -> void:
 	self.call_deferred("relay")
 	add_to_group("mooncrane_targets")
 	add_to_group("enemies")
+	add_to_group("cheers")
 	Global.connect("change_selected_card", self, "_selected_card_changed")
 	$MooncraneTarget.connect("mouse_entered", self, "_mouseentered")
 	$MooncraneTarget.connect("mouse_exited", self, "_mouseexited")
@@ -107,8 +108,12 @@ func kill_target():
 
 func damage(damage):
 	health -= damage
+	$Mask/Fill/DamageFlash.active = true
 	if health <= 0:
 		$AnimationPlayer.play("Die")
+
+func cheer():
+	return -torment_value
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Die":

@@ -24,6 +24,8 @@ func _unhandled_input(event):
 			get_parent().add_child(new_firework)
 			new_firework.global_position = Global.selected_card.global_position
 			new_firework.target = global_position
+			new_firework.cheerval = Global.selected_card.cheer()
+			new_firework.damage = Global.selected_card.damage()
 			Global.selected_card.discard()
 
 func _selected_card_changed(_old, new):

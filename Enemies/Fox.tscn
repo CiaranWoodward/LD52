@@ -116,6 +116,12 @@ color_ramp = SubResource( 1 )
 [node name="Fill" type="Sprite" parent="Mask"]
 texture = ExtResource( 3 )
 
+[node name="DamageFlash" parent="Mask/Fill" instance=ExtResource( 6 )]
+period = 0.1
+color = Color( 1, 0.235294, 0.235294, 1 )
+active = false
+one_shot = true
+
 [node name="Glow" type="Sprite" parent="Mask"]
 self_modulate = Color( 1, 1, 1, 0 )
 texture = ExtResource( 2 )

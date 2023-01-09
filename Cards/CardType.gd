@@ -18,3 +18,9 @@ func max_upgrade_level() -> int:
 
 func lifetime() -> float:
 	return 0.0
+
+func damage() -> float:
+	return 0.0
+
+func cheer() -> float:
+	return 0.05

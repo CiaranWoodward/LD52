@@ -1,13 +1,16 @@
 extends Node2D
 
 export var speed = 350
+export var damage_range = 150.0
 var exploded = false
 
+var damage = 10
+var cheerval = 0.3
 var target : Vector2 setget set_target
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	add_to_group("cheers")
 
 func set_target(newtarget):
 	target = newtarget
@@ -27,6 +30,7 @@ func _process(delta: float) -> void:
 		global_position += direction * distance_covered
 
 func explode():
+	cause_damage()
 	exploded = true
 	$Firework.visible = true
 	$Rocket.self_modulate = Color.transparent
@@ -34,6 +38,18 @@ func explode():
 	$Firework.rotation = rand_range(0, 2 * PI)
 	if (randi() % 2 == 1):
 		$Firework.scale.x = -$Firework.scale.x
+
+func cause_damage():
+	var enemies = get_tree().get_nodes_in_group("enemies")
+	for enemy in enemies:
+		var dist = global_position.distance_to(enemy.global_position)
+		if dist < damage_range:
+			enemy.damage(damage)
+
+func cheer():
+	if exploded:
+		return cheerval
+	return 0.0
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	print("Free Firework")

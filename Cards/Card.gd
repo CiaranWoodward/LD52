@@ -95,6 +95,12 @@ func upgrade_level():
 func lifetime():
 	return typeobj.lifetime()
 
+func damage() -> float:
+	return typeobj.damage()
+
+func cheer() -> float:
+	return typeobj.cheer()
+
 func _changed_selected_card(_old, new):
 	$Scaler/GlowParent.active = (new == self)
 

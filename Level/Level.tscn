@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Level/UI/HUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/Background/moon0000.png" type="Texture" id=2]
@@ -451,6 +451,9 @@ tracks/2/keys = {
 "values": [ Vector2( 410, 779 ) ]
 }
 
+[sub_resource type="CircleShape2D" id=18]
+radius = 170.0
+
 [node name="Level" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
@@ -736,3 +739,6 @@ type = "escape"
 position = Vector2( -188, 575 )
 size = Vector2( 100, 300 )
 type = "escape"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 18 )

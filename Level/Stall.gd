@@ -83,11 +83,18 @@ func evaluate_coin():
 	if coin_period != 0 && has_stock():
 		tween.stop_all()
 		tween.interpolate_callback(self, coin_period, "evaluate_coin")
+		tween.start()
 		Global.coin += 1
+		var sounds = [$CoinGenerate1, $CoinGenerate2, $CoinGenerate3]
+		sounds.shuffle()
+		var sound = sounds[0]
+		sound.pitch_scale = rand_range(0.9, 1.1)
+		sound.play()
 
 func _selected_card_changed(_old, new):
 		stall_selected = is_stall_selected()
 		$GlowParent.active = stall_selected
+
 
 func is_stall_selected() -> bool:
 	if !is_instance_valid(Global.selected_card):

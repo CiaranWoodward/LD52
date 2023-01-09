@@ -5,11 +5,14 @@ signal coin_changed(new_coin)
 signal card_added(new_card)
 signal card_removed(old_card)
 signal change_selected_card(old, new)
+signal moon_health_changed()
 
 var cheer = 0.1
 var spirit = int(0)
 var coin = int(10) setget set_coin
 var portal_size = 1.0
+var max_moon_health = 60.0
+var moon_health = 60.0 setget set_moon_health
 
 var hovered_card = null
 var selected_card = null setget set_selected_card
@@ -57,6 +60,13 @@ func remove_deck_from_tree():
 		var p = card.get_parent()
 		if is_instance_valid(p):
 			p.remove_child(card)
+
+func set_moon_health(newval):
+	moon_health = float(newval)
+	portal_size = moon_health/max_moon_health
+	if portal_size > 1.0: portal_size = 1.0
+	if portal_size < 0.0: portal_size = 0.0
+	emit_signal("moon_health_changed")
 
 func sort_deck():
 	deck.sort_custom(self, "_card_compare")

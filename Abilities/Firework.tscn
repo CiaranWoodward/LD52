@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Graphics/Abilities/firework0000.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Abilities/firework0003.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Sounds/Firework.wav" type="AudioStream" id=8]
 [ext_resource path="res://Abilities/FireworkAnimation.gd" type="Script" id=9]
 [ext_resource path="res://Abilities/Firework.gd" type="Script" id=10]
+[ext_resource path="res://Sounds/FireworkScream.wav" type="AudioStream" id=11]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -191,6 +192,10 @@ color_ramp = SubResource( 6 )
 [node name="SoundExplosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
 volume_db = 5.2
+bus = "Explosions"
+
+[node name="SoundTrail" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
 bus = "Explosions"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

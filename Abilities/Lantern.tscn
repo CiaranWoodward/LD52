@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Graphics/Abilities/lantern0000.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Abilities/lanternglow0000.png" type="Texture" id=2]
 [ext_resource path="res://Utils/GlowParent.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Abilities/Lantern.gd" type="Script" id=4]
+[ext_resource path="res://Sounds/LanternPop.wav" type="AudioStream" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 66.0681
@@ -82,5 +83,10 @@ color2 = Color( 0.941176, 0.588235, 0.407843, 0.447059 )
 anims/Die = SubResource( 2 )
 anims/RESET = SubResource( 3 )
 anims/Spawn = SubResource( 4 )
+
+[node name="SoundDie" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = -6.992
+bus = "Explosions"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

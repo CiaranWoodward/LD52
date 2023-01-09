@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Level/UI/HUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/Background/moon0000.png" type="Texture" id=2]
@@ -27,6 +27,7 @@
 [ext_resource path="res://Abilities/FireworkOverlay.tscn" type="PackedScene" id=25]
 [ext_resource path="res://Graphics/EastSeaDokdo-Regular.ttf" type="DynamicFontData" id=26]
 [ext_resource path="res://Level/Moon.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Music/Battle Song.ogg" type="AudioStream" id=28]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 6.60012e-43, 0.150838, 0.659218, 1 )
@@ -456,6 +457,10 @@ radius = 170.0
 
 [node name="Level" type="Node2D"]
 
+[node name="BattleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+autoplay = true
+
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Landscape" type="Sprite" parent="Background"]
@@ -656,9 +661,9 @@ theme = ExtResource( 22 )
 self_modulate = Color( 0.905882, 0.713726, 0.541176, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 810.0
+margin_left = -150.0
 margin_top = 236.0
-margin_right = 1110.0
+margin_right = 150.0
 margin_bottom = 373.0
 grow_horizontal = 2
 grow_vertical = 2

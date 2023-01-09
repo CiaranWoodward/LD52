@@ -11,6 +11,8 @@ var target : Vector2 setget set_target
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("cheers")
+	$SoundTrail.pitch_scale = rand_range(0.8, 1.2)
+	$SoundTrail.play()
 
 func set_target(newtarget):
 	target = newtarget
@@ -32,6 +34,7 @@ func _process(delta: float) -> void:
 func explode():
 	cause_damage()
 	exploded = true
+	$SoundTrail.stop()
 	$Firework.visible = true
 	$Rocket.self_modulate = Color.transparent
 	$AnimationPlayer.play("Explode")

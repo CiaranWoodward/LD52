@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Graphics/Enemies/catfill0000.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Enemies/catface0000.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Graphics/glowpart0000.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/Cat.gd" type="Script" id=5]
 [ext_resource path="res://Utils/GlowParent.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sounds/MonsterIdle.wav" type="AudioStream" id=7]
 
 [sub_resource type="Curve" id=2]
 _data = [ Vector2( 0.420792, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.251136 ), 0.0, 0.0, 0, 0 ]
@@ -149,5 +150,10 @@ shape = SubResource( 5 )
 anims/Die = SubResource( 7 )
 anims/RESET = SubResource( 8 )
 anims/Spawn = SubResource( 6 )
+
+[node name="Idle" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+bus = "Enemies"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

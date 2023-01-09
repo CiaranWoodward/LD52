@@ -317,6 +317,32 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 812, -158 ), Vector2( 812, 250 ), Vector2( 812, 229 ), Vector2( 812, 229 ), Vector2( 812, 250 ), Vector2( 812, -158 ) ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("../LevelAnim/In")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "PortalClose", -1 ],
+"method": "play_backwards"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=14]
 length = 0.001
@@ -502,11 +528,9 @@ scale = Vector2( 0.5, 0.5 )
 
 [node name="Stall" parent="Background/Landscape/Land" instance=ExtResource( 6 )]
 position = Vector2( -636, 342 )
-scale = Vector2( 0.8, 0.8 )
 
 [node name="Stall2" parent="Background/Landscape/Land" instance=ExtResource( 6 )]
 position = Vector2( 638, 342 )
-scale = Vector2( 0.8, 0.8 )
 
 [node name="SpiritLantern" parent="Background/Landscape/Land" instance=ExtResource( 7 )]
 position = Vector2( -422, 322 )
@@ -623,11 +647,13 @@ position = Vector2( 1070, 318 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="LevelIntro" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 rect_min_size = Vector2( 1920, 1080 )
+mouse_filter = 2
 theme = ExtResource( 22 )
 
 [node name="YearBack" type="NinePatchRect" parent="LevelIntro"]
@@ -658,11 +684,13 @@ valign = 1
 self_modulate = Color( 0.129412, 0.129412, 0.129412, 0 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = SubResource( 12 )
 expand = true
 
 [node name="LevelAnim" type="AnimationPlayer" parent="."]
 root_node = NodePath("../LevelIntro")
+autoplay = "In"
 anims/In = SubResource( 17 )
 anims/RESET = SubResource( 14 )
 

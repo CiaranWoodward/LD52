@@ -1,6 +1,7 @@
 extends Node2D
 
 export var speed = 350
+var exploded = false
 
 var target : Vector2 setget set_target
 
@@ -14,6 +15,8 @@ func set_target(newtarget):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if exploded:
+		return
 	var distance_covered = delta * speed
 	var distance_left = global_position.distance_to(target)
 	var direction = global_position.direction_to(target)
@@ -24,12 +27,13 @@ func _process(delta: float) -> void:
 		global_position += direction * distance_covered
 
 func explode():
+	exploded = true
 	$Firework.visible = true
 	$Rocket.self_modulate = Color.transparent
 	$AnimationPlayer.play("Explode")
-	$Explosion.rotation = rand_range(0, 2 * PI)
+	$Firework.rotation = rand_range(0, 2 * PI)
 	if (randi() % 2 == 1):
-		$Explosion.scale.x = -1
+		$Firework.scale.x = -$Firework.scale.x
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	print("Free Firework")

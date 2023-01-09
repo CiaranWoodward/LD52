@@ -100,6 +100,9 @@ func damage() -> float:
 
 func cheer() -> float:
 	return typeobj.cheer()
+	
+func coin_period() -> float:
+	return typeobj.coin_period()
 
 func _changed_selected_card(_old, new):
 	$Scaler/GlowParent.active = (new == self)

@@ -5,3 +5,6 @@ func card_type():
 
 func lifetime():
 	return 8.0
+
+func cheer() -> float:
+	return 0.8

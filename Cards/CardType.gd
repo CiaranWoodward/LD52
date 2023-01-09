@@ -24,3 +24,6 @@ func damage() -> float:
 
 func cheer() -> float:
 	return 0.05
+
+func coin_period() -> float:
+	return 0.0

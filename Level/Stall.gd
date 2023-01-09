@@ -7,11 +7,17 @@ var type = Global.CardType.CAKE_STALL
 var mooncake_stock = 0.0
 var lantern_stock = 0.0
 var decay_rate = 0.15
+var cheerval = 0.0
+var coin_period = 0.0
+
+onready var tween = Tween.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.connect("change_selected_card", self, "_selected_card_changed")
 	add_to_group("stalls")
+	add_to_group("cheers")
+	add_child(tween)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -60,6 +66,9 @@ func _unhandled_input(event):
 		if !event.pressed and event.button_index == BUTTON_LEFT && mouse_over && stall_selected:
 			#Stock the stall
 			var lifetime = Global.selected_card.lifetime()
+			cheerval = Global.selected_card.cheer()
+			coin_period = Global.selected_card.coin_period()
+			evaluate_coin()
 			if lifetime == 0: lifetime = 5
 			decay_rate =  1/lifetime
 			if type == Global.CardType.LIGHT_STALL:
@@ -69,6 +78,12 @@ func _unhandled_input(event):
 				mooncake_stock = 1.0
 				lantern_stock = 0.0
 			Global.selected_card.discard()
+
+func evaluate_coin():
+	if coin_period != 0 && has_stock():
+		tween.stop_all()
+		tween.interpolate_callback(self, coin_period, "evaluate_coin")
+		Global.coin += 1
 
 func _selected_card_changed(_old, new):
 		stall_selected = is_stall_selected()
@@ -81,6 +96,11 @@ func is_stall_selected() -> bool:
 		type = Global.selected_card.card_type()
 		return true
 	return false
+
+func cheer():
+	if has_stock():
+		return cheerval
+	return 0.0
 
 func has_stock():
 	return mooncake_stock > 0 || lantern_stock > 0

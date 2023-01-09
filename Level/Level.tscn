@@ -28,6 +28,7 @@
 [ext_resource path="res://Graphics/EastSeaDokdo-Regular.ttf" type="DynamicFontData" id=26]
 [ext_resource path="res://Level/Moon.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Abilities/Dragon.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Music/Battle Song.ogg" type="AudioStream" id=29]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 6.60012e-43, 0.150838, 0.659218, 1 )
@@ -456,6 +457,10 @@ tracks/2/keys = {
 radius = 170.0
 
 [node name="Level" type="Node2D"]
+
+[node name="BattleMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+autoplay = true
 
 [node name="Background" type="Node2D" parent="."]
 

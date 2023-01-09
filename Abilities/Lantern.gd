@@ -42,6 +42,8 @@ func explode():
 	cause_damage()
 	exploded = true
 	$AnimationPlayer.play("Die")
+	$SoundDie.pitch_scale = rand_range(0.8, 1.2)
+	$SoundDie.play()
 
 func cause_damage():
 	var enemies = get_tree().get_nodes_in_group("enemies")

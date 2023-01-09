@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Level/UI/HUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/Background/moon0000.png" type="Texture" id=2]
@@ -21,6 +21,9 @@
 [ext_resource path="res://Enemies/Cat.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Enemies/Fox.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Enemies/Pig.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Graphics/MainTheme.tres" type="Theme" id=22]
+[ext_resource path="res://Graphics/small border0000.png" type="Texture" id=23]
+[ext_resource path="res://Graphics/EastSeaDokdo-Regular.ttf" type="DynamicFontData" id=24]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 6.60012e-43, 0.150838, 0.659218, 1 )
@@ -272,6 +275,153 @@ tracks/2/keys = {
 "values": [ Vector2( 410, 779 ) ]
 }
 
+[sub_resource type="DynamicFont" id=10]
+size = 130
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -8
+font_data = ExtResource( 24 )
+
+[sub_resource type="Gradient" id=11]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=12]
+gradient = SubResource( 11 )
+
+[sub_resource type="Animation" id=17]
+resource_name = "In"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Grey:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.129412, 0.129412, 0.129412, 1 ), Color( 0.129412, 0.129412, 0.129412, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YearBack:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1, 2, 2.3, 3 ),
+"transitions": PoolRealArray( 1.56917, 0.574349, 1, 1.68179, 0.870551, 1 ),
+"update": 0,
+"values": [ Vector2( 812, -158 ), Vector2( 812, 250 ), Vector2( 812, 229 ), Vector2( 812, 229 ), Vector2( 812, 250 ), Vector2( 812, -158 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Grey:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.129412, 0.129412, 0.129412, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("YearBack:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 810, 236 ) ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "PortalClose"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Landscape/Portal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1.62451, 1 ),
+"update": 0,
+"values": [ Vector2( 26, -261 ), Vector2( 413, -534 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/Landscape/Spawn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -14, -248 ), Vector2( 169, -356 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/Landscape/PortalReflection:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 24, 621 ), Vector2( 410, 779 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/Landscape/Portal:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 413, -534 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/Landscape/Spawn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 107, -321 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/Landscape/PortalReflection:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 410, 779 ) ]
+}
+
 [node name="Level" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="."]
@@ -464,3 +614,52 @@ scale = Vector2( 0.25, 0.25 )
 [node name="Cat" parent="." instance=ExtResource( 19 )]
 position = Vector2( 1070, 318 )
 scale = Vector2( 0.25, 0.25 )
+
+[node name="LevelIntro" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_min_size = Vector2( 1920, 1080 )
+theme = ExtResource( 22 )
+
+[node name="YearBack" type="NinePatchRect" parent="LevelIntro"]
+self_modulate = Color( 0.905882, 0.713726, 0.541176, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -150.0
+margin_top = 236.0
+margin_right = 150.0
+margin_bottom = 373.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource( 23 )
+patch_margin_left = 35
+patch_margin_top = 34
+patch_margin_right = 35
+patch_margin_bottom = 34
+
+[node name="Year" type="Label" parent="LevelIntro/YearBack"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 10 )
+text = "1998"
+align = 1
+valign = 1
+
+[node name="Grey" type="TextureRect" parent="LevelIntro"]
+self_modulate = Color( 0.129412, 0.129412, 0.129412, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 12 )
+expand = true
+
+[node name="LevelAnim" type="AnimationPlayer" parent="."]
+root_node = NodePath("../LevelIntro")
+anims/In = SubResource( 17 )
+anims/RESET = SubResource( 14 )
+
+[node name="In" type="AnimationPlayer" parent="LevelAnim"]
+root_node = NodePath("../..")
+anims/PortalClose = SubResource( 15 )
+anims/RESET = SubResource( 16 )

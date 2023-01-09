@@ -1,0 +1,183 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Graphics/e0000.png" type="Texture" id=1]
+[ext_resource path="res://Graphics/Cards/frame0000.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/MainTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Graphics/EastSeaDokdo-Regular.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -20
+extra_spacing_bottom = -10
+font_data = ExtResource( 4 )
+
+[node name="Info" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+
+[node name="Grey" type="NinePatchRect" parent="."]
+self_modulate = Color( 0.129412, 0.129412, 0.129412, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_top = 50.0
+margin_right = -50.0
+margin_bottom = -50.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 1820.0
+margin_bottom = 980.0
+
+[node name="Story" type="NinePatchRect" parent="MarginContainer/HBoxContainer"]
+self_modulate = Color( 0.984314, 0.835294, 0.490196, 1 )
+margin_right = 908.0
+margin_bottom = 980.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+patch_margin_left = 138
+patch_margin_top = 141
+patch_margin_right = 138
+patch_margin_bottom = 138
+
+[node name="StoryMargin" type="MarginContainer" parent="MarginContainer/HBoxContainer/Story"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
+
+[node name="StoryVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Story/StoryMargin"]
+margin_right = 708.0
+margin_bottom = 787.0
+
+[node name="StoryHeader" type="Label" parent="MarginContainer/HBoxContainer/Story/StoryMargin/StoryVBox"]
+margin_right = 708.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 1 )
+text = "Story"
+align = 1
+valign = 1
+
+[node name="StoryText" type="Label" parent="MarginContainer/HBoxContainer/Story/StoryMargin/StoryVBox"]
+margin_top = 47.0
+margin_right = 708.0
+margin_bottom = 787.0
+size_flags_vertical = 3
+text = "Across the world, Autumn festivals are held to wish for a plentiful harvest and celebrate a bountiful harvest. In China and many other East and Southeast Asian countries, the Mid-Autumn or Moon Festival takes place when the moon is at its fullest and brightest celebrating the end of the harvest.
+
+One small town in China is known across the country for their wonderful display. On this night, when the moon is at its fullest, a portal opens releasing mischevious phantoms into the human world. They are scared away by fabulous light displays while cranes filled with moonlight are released to restore the light to the moon and close the portal.
+
+Little do the people know, the spirits dancing across the sky are not puppets and kites. They are real.
+
+As one of the festival organisers, it is your job to keep the phantoms from ruining the festival whilst putting on a fabulous show!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Help" type="NinePatchRect" parent="MarginContainer/HBoxContainer"]
+self_modulate = Color( 0.984314, 0.835294, 0.490196, 1 )
+margin_left = 912.0
+margin_right = 1820.0
+margin_bottom = 980.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+patch_margin_left = 138
+patch_margin_top = 141
+patch_margin_right = 138
+patch_margin_bottom = 138
+
+[node name="HelpMargin-" type="MarginContainer" parent="MarginContainer/HBoxContainer/Help"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
+theme = ExtResource( 3 )
+
+[node name="HelpScroll" type="ScrollContainer" parent="MarginContainer/HBoxContainer/Help/HelpMargin-"]
+margin_right = 708.0
+margin_bottom = 780.0
+
+[node name="HelpVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll"]
+margin_right = 696.0
+margin_bottom = 1014.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 20
+
+[node name="HelpHeader" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
+margin_right = 696.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 1 )
+text = "Help"
+align = 1
+valign = 1
+
+[node name="Cards" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
+margin_top = 63.0
+margin_right = 696.0
+margin_bottom = 211.0
+size_flags_vertical = 3
+text = "The two types of card are actions and stalls.
+Actions can be used as described on the card and have effects as indicated on the screen.
+Stall cards replenish the stock held in your stalls."
+autowrap = true
+
+[node name="Cards2" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
+margin_top = 231.0
+margin_right = 696.0
+margin_bottom = 379.0
+size_flags_vertical = 3
+text = "Cards cost spirit lanterns to use as indicated by the number on the card.
+See the damage done by an action on the card as \"DMG\".
+A description of the card's effect is also shown."
+autowrap = true
+
+[node name="Spirit" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
+margin_top = 399.0
+margin_right = 696.0
+margin_bottom = 510.0
+size_flags_vertical = 3
+text = "The brightness of the crowds indicates the level of spirit. More spirit means your spirit lanterns recharge more quickly."
+autowrap = true
+
+[node name="Enemies" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
+margin_top = 530.0
+margin_right = 696.0
+margin_bottom = 715.0
+size_flags_vertical = 3
+text = "The three types of phantom are: fox, cat and pig.
+Foxes will spread bad luck into the crowd decreasing their spirit.
+Cats will wait to intercept and absorb Moon Cranes.
+Pigs are greedy and will steal the stock from your stalls."
+autowrap = true
+
+[node name="Shop" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
+margin_top = 735.0
+margin_right = 696.0
+margin_bottom = 809.0
+size_flags_vertical = 3
+text = "Between years, you are able to review and manage your deck. You may buy, upgrade and discards cards."
+autowrap = true
+
+[node name="Stalls" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
+margin_top = 829.0
+margin_right = 696.0
+margin_bottom = 1014.0
+size_flags_vertical = 3
+text = "The two types or stall are mooncake and lantern.
+Stock stalls with mooncakes to generate coins to spend on new/upgraded cards.
+Stock stalls with lanterns to raise the spirit of the crowds to increase the recharge rate of spirit lanterns."
+autowrap = true

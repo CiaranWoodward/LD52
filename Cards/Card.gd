@@ -47,6 +47,7 @@ func _ready() -> void:
 	add_child(reseatTween)
 	set_active(is_active)
 	Global.connect("unhovered_card", self, "_other_card_unhovered")
+	Global.connect("change_selected_card", self, "_changed_selected_card")
 	if editor_placed_card:
 		set_type(editor_card_type)
 
@@ -73,6 +74,9 @@ func set_type(type):
 	$Scaler/CardFront.add_child(newtype)
 	typeobj = newtype
 
+func card_type():
+	return typeobj.card_type()
+
 func get_type():
 	return typeobj.card_type()
 
@@ -87,6 +91,9 @@ func max_upgrade_level():
 
 func upgrade_level():
 	return typeobj.upgrade_level
+
+func _changed_selected_card(_old, new):
+	$Scaler/GlowParent.active = (new == self)
 
 func set_active(active: bool):
 	is_active = active
@@ -130,6 +137,7 @@ func reseat_to(target, delay=0.0, offset=Vector2.ZERO, rotationoffset=0.0, callb
 	reseat_callback = callback
 	var reseatTime = rand_range(reseatTimeLow, reseatTimeHigh)
 	set_mousehover_ignore(true)
+	Global.unselect_card(self)
 	reseatTween.stop_all()
 	reseatTween.interpolate_property(self, "global_scale", global_scale, target.global_scale, reseatTime, reseatTrans, reseatEase, delay)
 	reseatTween.interpolate_property(self, "global_position", global_position, target.global_position + offset, reseatTime, reseatTrans, reseatEase, delay)
@@ -160,11 +168,11 @@ func _on_MouseSelectArea_input_event(_viewport: Node, event: InputEvent, _shape_
 				moused_down = true
 			else:
 				if moused_down:
-					$SoundClick.pitch_scale = rand_range(1, 1.1)
-					$SoundClick.play()
 					emit_signal("card_clicked", self)
-					if selectable && Global.selected_card != self:
+					if selectable && Global.selected_card != self && is_active:
 						Global.selected_card = self
+						$SoundClick.pitch_scale = rand_range(1, 1.1)
+						$SoundClick.play()
 					else:
 						Global.selected_card = null
 				moused_down = false

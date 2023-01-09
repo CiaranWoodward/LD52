@@ -6,6 +6,7 @@ onready var _hand = $Hand
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.hud = self
 	_draw.connect("cards_added", self, "_draw_replaced")
 	add_fresh_deck_to_discard_pile()
 
@@ -18,7 +19,7 @@ func add_fresh_deck_to_discard_pile():
 	# Then prepare and store the global deck in the discard pile
 	_discard.spawn_global_deck()
 	
-	# Connect the click
+	# Connect the click (We can remove this if we don't use it...)
 	for card in Global.deck:
 		card.connect("card_clicked", self, "card_clicked")
 	
@@ -26,7 +27,7 @@ func add_fresh_deck_to_discard_pile():
 	replace_draw()
 
 func card_clicked(card):
-	discard(card)
+	pass
 
 func discard(card):
 	card.is_active = false

@@ -1,16 +1,24 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Abilities/Lantern.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/e0000.png" type="Texture" id=2]
+[ext_resource path="res://Abilities/LanternOverlay.gd" type="Script" id=3]
+[ext_resource path="res://Utils/GlowParent.tscn" type="PackedScene" id=4]
 
 [node name="LanternOverlay" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Lantern" parent="." instance=ExtResource( 1 )]
+position = Vector2( 37, 893.002 )
+scale = Vector2( 1, 1.00345 )
+active = false
 
 [node name="Sprite" type="Sprite" parent="."]
 self_modulate = Color( 0.772549, 0.772549, 0.772549, 0.305882 )
-scale = Vector2( 0.0800002, 1.00345 )
+scale = Vector2( 0.04, 0.857407 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Lantern" parent="Sprite" instance=ExtResource( 1 )]
-position = Vector2( 924.998, 889.932 )
-scale = Vector2( 12.5, 1 )
+[node name="GlowParent" parent="Sprite" instance=ExtResource( 4 )]
+scale = Vector2( 0.08, 0.08 )
+period = 0.3

@@ -15,6 +15,7 @@ var hovered_card = null
 var selected_card = null setget set_selected_card
 
 var deck = []
+var hud = null
 
 enum CardType {DRAGON, FIREWORK, FIRECRACKER, LANTERN, LIGHT_STALL, CAKE_STALL, CRANE}
 

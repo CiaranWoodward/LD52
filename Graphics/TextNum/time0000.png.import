@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dragon0000.png-44bfc5dad1f88e2bceeb114e48f3ae8b.stex"
+path="res://.import/time0000.png-3ef2504e718229906f493629e5825b5f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Abilities/dragon0000.png"
-dest_files=[ "res://.import/dragon0000.png-44bfc5dad1f88e2bceeb114e48f3ae8b.stex" ]
+source_file="res://Graphics/TextNum/time0000.png"
+dest_files=[ "res://.import/time0000.png-3ef2504e718229906f493629e5825b5f.stex" ]
 
 [params]
 

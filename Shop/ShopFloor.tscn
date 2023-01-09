@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/Cards/front0000.png" type="Texture" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Cards/coin0000.png" type="Texture" id=3]
 [ext_resource path="res://Shop/ShopFloor.gd" type="Script" id=4]
 [ext_resource path="res://Sounds/CoinSpend3.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/CoinSpend2.wav" type="AudioStream" id=6]
@@ -26,16 +26,16 @@ patch_margin_right = 148
 patch_margin_bottom = 148
 
 [node name="Gold" type="Label" parent="NinePatchRect"]
-margin_left = 1207.0
-margin_top = 18.0
-margin_right = 1223.0
-margin_bottom = 32.0
+margin_left = 1225.0
+margin_top = 37.0
+margin_right = 1241.0
+margin_bottom = 51.0
 text = "20"
 align = 2
 
-[node name="Sprite" type="Sprite" parent="NinePatchRect"]
-position = Vector2( 1253, 25 )
-scale = Vector2( 0.5, 0.5 )
+[node name="Coin" type="Sprite" parent="NinePatchRect"]
+position = Vector2( 1266, 43 )
+scale = Vector2( 0.06, 0.06 )
 texture = ExtResource( 3 )
 
 [node name="Firework" type="Node2D" parent="."]

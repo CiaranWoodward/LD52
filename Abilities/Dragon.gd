@@ -13,6 +13,7 @@ func _unhandled_input(event):
 			#Release the DRAGON
 			$Body.visible = true
 			$Body.cheerval = Global.selected_card.cheer()
+			$Spawn.play()
 			var lifetime = Global.selected_card.lifetime()
 			tween.stop_all()
 			tween.interpolate_callback(self, lifetime, "end_dragon")

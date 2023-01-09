@@ -25,3 +25,7 @@ func _card_clicked(card):
 	if Global.hover_card(card) && Global.coin >= card.coin_cost():
 		Global.add_card_to_deck(card.get_type())
 		Global.coin -= card.coin_cost()
+		
+		var sounds = [$Spend1, $Spend2, $Spend3]
+		sounds.shuffle()
+		sounds[0].play()

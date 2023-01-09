@@ -80,9 +80,12 @@ func wander():
 
 func damage(damage):
 	health -= damage
+	$Hurt.pitch_scale = rand_range(0.7, 1.3)
+	$Hurt.play()
 	$Mask/Fill/DamageFlash.active = true
 	if health <= 0:
 		$AnimationPlayer.play("Die")
+		$Idle.stop()
 
 func cheer():
 	return -torment_value

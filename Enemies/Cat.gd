@@ -98,8 +98,11 @@ func kill_target():
 
 func damage(damage):
 	health -= damage
+	$Hurt.pitch_scale = rand_range(0.9, 1.1)
+	$Hurt.play()
 	$Mask/Fill/DamageFlash.active = true
 	if health <= 0:
+		$Idle.stop()
 		$AnimationPlayer.play("Die")
 
 func cheer():

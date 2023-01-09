@@ -7,11 +7,14 @@ func card_type():
 	assert(false)
 	return Global.CardType.LANTERN
 
-func coin_cost():
+func coin_cost() -> int:
 	return 2
 
-func spirit_cost():
+func spirit_cost() -> int:
 	return 2
 
-func max_upgrade_level():
+func max_upgrade_level() -> int:
 	return 0
+
+func lifetime() -> float:
+	return 0.0

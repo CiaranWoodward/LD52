@@ -92,6 +92,9 @@ func max_upgrade_level():
 func upgrade_level():
 	return typeobj.upgrade_level
 
+func lifetime():
+	return typeobj.lifetime()
+
 func _changed_selected_card(_old, new):
 	$Scaler/GlowParent.active = (new == self)
 

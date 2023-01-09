@@ -6,9 +6,15 @@ signal card_added(new_card)
 signal card_removed(old_card)
 signal change_selected_card(old, new)
 signal moon_health_changed()
+signal spirit_changed()
 
-var cheer = 0.1
-var spirit = int(0)
+var spirit_cost = 1.0
+var max_spirit = 10
+
+var cheer_left = 0.1
+var cheer_right = 0.1
+var spirit = int(0) setget set_spirit
+var spirit_overflow = 0.0
 var coin = int(10) setget set_coin
 var portal_size = 1.0
 var max_moon_health = 60.0
@@ -31,15 +37,21 @@ func _ready() -> void:
 	card_scene = load("res://Cards/Card.tscn")
 	randomize()
 	add_card_to_deck(CardType.FIREWORK)
-	add_card_to_deck(CardType.FIRECRACKER)
+	add_card_to_deck(CardType.FIREWORK)
 	add_card_to_deck(CardType.LANTERN)
 	add_card_to_deck(CardType.CAKE_STALL)
 	add_card_to_deck(CardType.CRANE)
-	add_card_to_deck(CardType.DRAGON)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		set_selected_card(null)
+	spirit_overflow += delta * (cheer_left + cheer_right)
+	if spirit_overflow > spirit_cost:
+		spirit_overflow -= spirit_cost
+		spirit += 1
+		if spirit > max_spirit:
+			spirit = max_spirit
+		emit_signal("spirit_changed")
 
 func add_card_to_deck(type):
 	var newcard = card_scene.instance()
@@ -67,6 +79,10 @@ func set_moon_health(newval):
 	if portal_size > 1.0: portal_size = 1.0
 	if portal_size < 0.0: portal_size = 0.0
 	emit_signal("moon_health_changed")
+
+func set_spirit(newval):
+	spirit = newval
+	emit_signal("spirit_changed")
 
 func sort_deck():
 	deck.sort_custom(self, "_card_compare")

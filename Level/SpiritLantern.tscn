@@ -1,8 +1,9 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Graphics/Background/lanternfill0000.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Background/lanternoutline0000.png" type="Texture" id=2]
 [ext_resource path="res://Graphics/Background/lanternglow0000.png" type="Texture" id=3]
+[ext_resource path="res://Level/SpiritLantern.gd" type="Script" id=4]
 
 [sub_resource type="Animation" id=16]
 resource_name = "Bob"
@@ -241,6 +242,7 @@ graph_offset = Vector2( -38, -32 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
 [node name="SpiritLantern" type="Node2D"]
+script = ExtResource( 4 )
 
 [node name="Lantern" type="Node2D" parent="."]
 scale = Vector2( 0.5, 0.5 )

@@ -539,9 +539,48 @@ position = Vector2( -636, 342 )
 [node name="Stall2" parent="Background/Landscape/Land" instance=ExtResource( 6 )]
 position = Vector2( 638, 342 )
 
-[node name="SpiritLantern" parent="Background/Landscape/Land" instance=ExtResource( 7 )]
-position = Vector2( -422, 322 )
+[node name="Lanterns" type="Node2D" parent="Background/Landscape/Land"]
+position = Vector2( 638, 342 )
 scale = Vector2( 0.5, 0.5 )
+
+[node name="SpiritLantern" parent="Background/Landscape/Land/Lanterns" instance=ExtResource( 7 )]
+position = Vector2( -3104, -74 )
+
+[node name="SpiritLantern2" parent="Background/Landscape/Land/Lanterns" instance=ExtResource( 7 )]
+position = Vector2( -2838, -36 )
+spirit_level = 2
+
+[node name="SpiritLantern3" parent="Background/Landscape/Land/Lanterns" instance=ExtResource( 7 )]
+position = Vector2( -2280, -30 )
+spirit_level = 3
+
+[node name="SpiritLantern4" parent="Background/Landscape/Land/Lanterns" instance=ExtResource( 7 )]
+position = Vector2( -2096, -4 )
+spirit_level = 4
+
+[node name="SpiritLantern5" parent="Background/Landscape/Land/Lanterns" instance=ExtResource( 7 )]
+position = Vector2( -1886, 24 )
+spirit_level = 5
+
+[node name="SpiritLantern6" parent="Background/Landscape/Land/Lanterns" instance=ExtResource( 7 )]
+position = Vector2( -612, 30 )
+spirit_level = 6
+
+[node name="SpiritLantern7" parent="Background/Landscape/Land/Lanterns" instance=ExtResource( 7 )]
+position = Vector2( -428, -28 )
+spirit_level = 7
+
+[node name="SpiritLantern8" parent="Background/Landscape/Land/Lanterns" instance=ExtResource( 7 )]
+position = Vector2( -250, -38 )
+spirit_level = 8
+
+[node name="SpiritLantern9" parent="Background/Landscape/Land/Lanterns" instance=ExtResource( 7 )]
+position = Vector2( 302, -34 )
+spirit_level = 9
+
+[node name="SpiritLantern10" parent="Background/Landscape/Land/Lanterns" instance=ExtResource( 7 )]
+position = Vector2( 490, -62 )
+spirit_level = 10
 
 [node name="LanternOverlay" parent="." instance=ExtResource( 24 )]
 position = Vector2( 960, 540 )

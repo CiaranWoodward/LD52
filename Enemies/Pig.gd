@@ -1,9 +1,9 @@
 extends Node2D
 
-export var speed = 100.0
+export var speed = 70.0
 export var rotate_speed = PI/2
 export var attack_range = 30.0
-export var health = 20
+export var health = 60
 export var steal_amount = 0.3
 export var torment_value = 0.1
 

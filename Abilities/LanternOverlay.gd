@@ -23,6 +23,8 @@ func _unhandled_input(event):
 			var new_lantern = lantern_scene.instance()
 			get_parent().add_child(new_lantern)
 			new_lantern.global_position = $Lantern.global_position
+			new_lantern.cheerval = Global.selected_card.cheer()
+			new_lantern.damage = Global.selected_card.damage()
 			Global.selected_card.discard()
 
 func _selected_card_changed(_old, new):

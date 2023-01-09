@@ -38,7 +38,8 @@ func GlowDown():
 	var p = get_parent()
 	glow_tween.stop_all()
 	glow_tween.interpolate_property(p, "modulate", p.modulate, color2, period, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	glow_tween.interpolate_callback(self, period, "GlowUp")
-	glow_tween.start()
 	if one_shot:
-		set_active(false)
+		glow_tween.interpolate_callback(self, period, "set_active", false)
+	else:
+		glow_tween.interpolate_callback(self, period, "GlowUp")
+	glow_tween.start()

@@ -2,7 +2,6 @@ extends Node2D
 
 export var sight_range = 450.0
 export var wander_speed = 100.0
-export var speed = 200.0
 export var rotate_speed = PI/2
 export var health = 20
 export var torment_value = 0.3

@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=3 format=2]
+[gd_resource type="AudioBusLayout" load_steps=4 format=2]
 
 [sub_resource type="AudioEffectReverb" id=1]
 resource_name = "Reverb"
@@ -14,6 +14,10 @@ room_size = 0.0
 damping = 0.79
 spread = 0.39
 wet = 0.1
+
+[sub_resource type="AudioEffectLowPassFilter" id=3]
+resource_name = "LowPassFilter"
+cutoff_hz = 4000.0
 
 [resource]
 bus/1/name = "Music"
@@ -44,9 +48,17 @@ bus/4/volume_db = 0.0
 bus/4/send = "Master"
 bus/4/effect/0/effect = SubResource( 2 )
 bus/4/effect/0/enabled = true
-bus/5/name = "Enemies"
+bus/5/name = "Enemy Dmg"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = -21.0849
+bus/5/volume_db = -6.91795
 bus/5/send = "Master"
+bus/6/name = "Enemy Idle"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = -11.952
+bus/6/send = "Master"
+bus/6/effect/0/effect = SubResource( 3 )
+bus/6/effect/0/enabled = true

@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/Cards/front0000.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Shop/ShopFloor.gd" type="Script" id=4]
+[ext_resource path="res://Sounds/CoinSpend3.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/CoinSpend2.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/CoinSpend1.wav" type="AudioStream" id=7]
 
 [node name="ShopFloor" type="Control"]
 margin_right = 110.0
@@ -110,3 +113,18 @@ editor_placed_card = true
 editor_card_type = 5
 growScale = 1.5
 selectable = false
+
+[node name="Spend1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -3.0
+bus = "Cards"
+
+[node name="Spend2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -3.0
+bus = "Cards"
+
+[node name="Spend3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -3.0
+bus = "Cards"

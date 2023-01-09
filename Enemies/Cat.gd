@@ -5,10 +5,15 @@ export var wander_speed = 100.0
 export var speed = 200.0
 export var rotate_speed = PI/2
 export var attack_range = 30.0
+export var health = 20
 
 var goto_point = Vector2.INF
 var target : Node2D = null
 var cur_direction = Vector2(0, 0)
+
+export var mooncrane_priority = 2
+export var mooncrane_hit_range = 30
+var _mouse_over = false
 
 # Cat goes: Spawn -> Relay -> Catzone -> Hunt crane -> Catzone
 
@@ -17,6 +22,12 @@ func _ready() -> void:
 	cur_direction = Vector2(rand_range(-10, 10), rand_range(-10, 10))
 	cur_direction = cur_direction.normalized()
 	self.call_deferred("relay")
+	add_to_group("mooncrane_targets")
+	Global.connect("change_selected_card", self, "_selected_card_changed")
+	$MooncraneTarget.connect("mouse_entered", self, "_mouseentered")
+	$MooncraneTarget.connect("mouse_exited", self, "_mouseexited")
+	is_mooncrane_selected()
+	$AnimationPlayer.play("Spawn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -69,6 +80,15 @@ func kill_target():
 		target.kill()
 		target = null
 
+func damage(damage):
+	health -= damage
+	if health <= 0:
+		$AnimationPlayer.play("Die")
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "Die":
+		queue_free()
+
 func find_target():
 	var cranes = get_tree().get_nodes_in_group("mooncranes")
 	
@@ -84,3 +104,20 @@ func find_target():
 	if is_instance_valid(best_crane):
 		target = best_crane
 
+func is_under_mouse() -> bool:
+	return _mouse_over
+
+func target_position():
+	return $MooncraneTarget.global_position
+
+func _mouseentered():
+	_mouse_over = true
+	
+func _mouseexited():
+	_mouse_over = false
+
+func _selected_card_changed(_old, new):
+	$Mask/TargetGlow.active = is_mooncrane_selected()
+
+func is_mooncrane_selected() -> bool:
+	return is_instance_valid(Global.selected_card) && Global.selected_card.card_type() == Global.CardType.CRANE

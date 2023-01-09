@@ -3,13 +3,14 @@ extends Node2D
 
 export var size = Vector2(100,100) setget set_size,get_size
 export var type = "relay"
-var global_center = global_position + size/2
+var global_center
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$BottomRight.position = size
 	if Engine.editor_hint:
 		return
+	global_center = global_position + size/2
 	add_to_group("enemy_zones")
 	add_to_group("enemy_" + type + "_zones")
 

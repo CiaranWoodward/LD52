@@ -29,3 +29,6 @@ func _selected_card_changed(_old, new):
 
 func is_mooncrane_selected() -> bool:
 	return is_instance_valid(Global.selected_card) && Global.selected_card.card_type() == Global.CardType.CRANE
+
+func damage(damage):
+	pass

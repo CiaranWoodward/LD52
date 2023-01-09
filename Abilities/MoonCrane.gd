@@ -3,6 +3,7 @@ extends Node2D
 export var speed = 140.0
 var target = null
 var exploded = false
+export var damage = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,14 +40,22 @@ func find_new_target():
 func explode():
 	if exploded:
 		return
+	kill_target()
 	exploded = true
 	$Flap.play("Die")
 
 func kill():
 	if exploded:
 		return
+	kill_target() #Mutually assured destruction
 	exploded = true
 	$Flap.play("Die")
+
+func kill_target():
+	if is_instance_valid(target):
+		var distance_left = global_position.distance_to(target.global_position)
+		if distance_left <= target.mooncrane_hit_range:
+			target.damage(damage)
 
 func _on_Flap_animation_finished(anim_name: String) -> void:
 	if anim_name == "Die":

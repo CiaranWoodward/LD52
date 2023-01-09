@@ -23,8 +23,7 @@ func _unhandled_input(event):
 			var new_lantern = lantern_scene.instance()
 			get_parent().add_child(new_lantern)
 			new_lantern.global_position = $Lantern.global_position
-			if is_instance_valid(Global.hud):
-				Global.hud.discard(Global.selected_card)
+			Global.selected_card.discard()
 
 func _selected_card_changed(_old, new):
 		visible = is_lantern_selected()

@@ -16,3 +16,6 @@ func _process(delta: float) -> void:
 	var col = move_and_collide(Vector2(0, speed)*delta)
 	if col:
 		print("We hit!")
+	if global_position.y < -100:
+		print("Free lantern")
+		queue_free()

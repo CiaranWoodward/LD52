@@ -95,6 +95,10 @@ func upgrade_level():
 func _changed_selected_card(_old, new):
 	$Scaler/GlowParent.active = (new == self)
 
+func discard():
+	if is_instance_valid(Global.hud):
+		Global.hud.discard(self)
+
 func set_active(active: bool):
 	is_active = active
 	$MouseHoverArea/ActiveHoverShape.set_deferred("disabled", !active)

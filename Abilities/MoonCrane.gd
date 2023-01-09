@@ -42,6 +42,12 @@ func explode():
 	exploded = true
 	$Flap.play("Die")
 
+func kill():
+	if exploded:
+		return
+	exploded = true
+	$Flap.play("Die")
+
 func _on_Flap_animation_finished(anim_name: String) -> void:
 	if anim_name == "Die":
 		print("Mooncrane Freed")

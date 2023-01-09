@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Graphics/e0000.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Cards/frame0000.png" type="Texture" id=2]
 [ext_resource path="res://Graphics/MainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://Graphics/EastSeaDokdo-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Graphics/Cards/spiriticon0000.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/Card.png" type="Texture" id=6]
+[ext_resource path="res://Graphics/lanterstall0000.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 72
@@ -112,7 +115,7 @@ margin_bottom = 780.0
 
 [node name="HelpVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll"]
 margin_right = 696.0
-margin_bottom = 1014.0
+margin_bottom = 1459.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 20
@@ -125,10 +128,26 @@ text = "Help"
 align = 1
 valign = 1
 
-[node name="Cards" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
+[node name="Cards" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
 margin_top = 63.0
 margin_right = 696.0
-margin_bottom = 211.0
+margin_bottom = 360.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox/Cards"]
+margin_right = 212.0
+margin_bottom = 297.0
+texture = ExtResource( 6 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox/Cards"]
+margin_left = 216.0
+margin_right = 696.0
+margin_bottom = 297.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Cards" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox/Cards/VBoxContainer"]
+margin_right = 480.0
+margin_bottom = 297.0
 size_flags_vertical = 3
 text = "The two types of card are actions and stalls.
 Actions can be used as described on the card and have effects as indicated on the screen.
@@ -136,27 +155,66 @@ Stall cards replenish the stock held in your stalls."
 autowrap = true
 
 [node name="Cards2" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
-margin_top = 231.0
+margin_top = 380.0
 margin_right = 696.0
-margin_bottom = 379.0
+margin_bottom = 528.0
 size_flags_vertical = 3
 text = "Cards cost spirit lanterns to use as indicated by the number on the card.
 See the damage done by an action on the card as \"DMG\".
 A description of the card's effect is also shown."
 autowrap = true
 
-[node name="Spirit" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
-margin_top = 399.0
+[node name="Stalls" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
+margin_top = 548.0
 margin_right = 696.0
-margin_bottom = 510.0
+margin_bottom = 955.0
+
+[node name="Stalls" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox/Stalls"]
+margin_right = 309.0
+margin_bottom = 407.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "The two types of stall are mooncake and lantern.
+Stock stalls with mooncakes to generate coins to spend on new/upgraded cards.
+Stock stalls with lanterns to raise the spirit of the crowds to increase the recharge rate of spirit lanterns."
+autowrap = true
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox/Stalls"]
+margin_left = 313.0
+margin_right = 696.0
+margin_bottom = 407.0
+size_flags_horizontal = 3
+texture = ExtResource( 7 )
+
+[node name="Spirit" type="HBoxContainer" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
+margin_top = 975.0
+margin_right = 696.0
+margin_bottom = 1160.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SpiritLantern" type="TextureRect" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox/Spirit"]
+margin_right = 346.0
+margin_bottom = 185.0
+grow_horizontal = 0
+size_flags_horizontal = 15
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Spirit" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox/Spirit"]
+margin_left = 350.0
+margin_right = 696.0
+margin_bottom = 185.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "The brightness of the crowds indicates the level of spirit. More spirit means your spirit lanterns recharge more quickly."
 autowrap = true
 
 [node name="Enemies" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
-margin_top = 530.0
+margin_top = 1180.0
 margin_right = 696.0
-margin_bottom = 715.0
+margin_bottom = 1365.0
 size_flags_vertical = 3
 text = "The three types of phantom are: fox, cat and pig.
 Foxes will spread bad luck into the crowd decreasing their spirit.
@@ -165,19 +223,9 @@ Pigs are greedy and will steal the stock from your stalls."
 autowrap = true
 
 [node name="Shop" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
-margin_top = 735.0
+margin_top = 1385.0
 margin_right = 696.0
-margin_bottom = 809.0
+margin_bottom = 1459.0
 size_flags_vertical = 3
 text = "Between years, you are able to review and manage your deck. You may buy, upgrade and discards cards."
-autowrap = true
-
-[node name="Stalls" type="Label" parent="MarginContainer/HBoxContainer/Help/HelpMargin-/HelpScroll/HelpVBox"]
-margin_top = 829.0
-margin_right = 696.0
-margin_bottom = 1014.0
-size_flags_vertical = 3
-text = "The two types or stall are mooncake and lantern.
-Stock stalls with mooncakes to generate coins to spend on new/upgraded cards.
-Stock stalls with lanterns to raise the spirit of the crowds to increase the recharge rate of spirit lanterns."
 autowrap = true

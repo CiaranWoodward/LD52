@@ -14,7 +14,7 @@ offsets = PoolRealArray( 6.85235e-43, 0.273743, 0.77095, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 161, 116 )
+extents = Vector2( 169, 134 )
 
 [node name="Stall" type="Node2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -24,6 +24,7 @@ script = ExtResource( 8 )
 texture = ExtResource( 6 )
 
 [node name="Lantern" type="Node2D" parent="Sprite"]
+position = Vector2( 0, -16 )
 
 [node name="Half" type="Sprite" parent="Sprite/Lantern"]
 texture = ExtResource( 1 )
@@ -68,7 +69,7 @@ scale_amount_random = 0.02
 color_ramp = SubResource( 1 )
 
 [node name="Mooncake" type="Node2D" parent="Sprite"]
-visible = false
+position = Vector2( 0, -16 )
 
 [node name="Half" type="Sprite" parent="Sprite/Mooncake"]
 texture = ExtResource( 5 )
@@ -85,7 +86,7 @@ active = false
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -1, 2 )
+position = Vector2( -1, -16 )
 shape = SubResource( 2 )
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]

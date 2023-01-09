@@ -5,6 +5,7 @@ export var rotate_speed = PI/2
 export var attack_range = 30.0
 export var health = 20
 export var steal_amount = 0.3
+export var torment_value = 0.1
 
 var goto_point = Vector2.INF
 var target : Node2D = null
@@ -23,6 +24,7 @@ func _ready() -> void:
 	cur_direction = cur_direction.normalized()
 	self.call_deferred("relay")
 	add_to_group("mooncrane_targets")
+	add_to_group("enemies")
 	Global.connect("change_selected_card", self, "_selected_card_changed")
 	$MooncraneTarget.connect("mouse_entered", self, "_mouseentered")
 	$MooncraneTarget.connect("mouse_exited", self, "_mouseexited")
@@ -33,6 +35,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var dest
 	kill_target()
+	if is_instance_valid(target) && !target.has_stock():
+		target = null
+		wander()
 	if !escaping && !is_instance_valid(target):
 		find_target()
 	if is_instance_valid(target):

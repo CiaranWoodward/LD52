@@ -28,7 +28,8 @@ offset = Vector2( 8.24855, 0.70986 )
 [node name="GlowParent" parent="Body" instance=ExtResource( 4 )]
 scale = Vector2( 0.08, 0.08 )
 period = 0.3
-color = Color( 0.815686, 0.815686, 0.0901961, 1 )
+color = Color( 1, 1, 1, 0.945098 )
+color2 = Color( 1, 1, 1, 0.882353 )
 
 [node name="TargetGlow" parent="." instance=ExtResource( 4 )]
 scale = Vector2( 0.08, 0.08 )

@@ -86,6 +86,7 @@ func goto_closest_zone(zones):
 	goto_point = best_zone.get_global_point_in_zone()
 
 func relay():
+	target = null
 	goto_random_zone(get_tree().get_nodes_in_group("enemy_relay_zones"))
 
 func wander():

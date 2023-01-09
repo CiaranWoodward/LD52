@@ -550,4 +550,7 @@ stream = ExtResource( 6 )
 volume_db = 1.074
 bus = "Explosions"
 
+[node name="Center" type="Position2D" parent="."]
+position = Vector2( 454, 372 )
+
 [connection signal="animation_finished" from="Crackle" to="." method="_on_Crackle_animation_finished"]

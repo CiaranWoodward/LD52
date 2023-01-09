@@ -8,3 +8,6 @@ func coin_cost():
 
 func spirit_cost():
 	return 8
+
+func lifetime():
+	return 10.0

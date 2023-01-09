@@ -11,6 +11,7 @@ var cheerval = 0.1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("cheers")
 	if !active:
 		collision_layer = 0
 		collision_mask = 0

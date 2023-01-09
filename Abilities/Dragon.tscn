@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Graphics/glowpart0000.png" type="Texture" id=1]
+[ext_resource path="res://Abilities/Body.gd" type="Script" id=2]
+[ext_resource path="res://Abilities/Dragon.gd" type="Script" id=3]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0.420792, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.251136 ), 0.0, 0.0, 0, 0 ]
@@ -16,9 +18,47 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.490099, 1 ), 0.0, 0.0, 0, 
 offsets = PoolRealArray( 0.00558659, 0.374302, 0.703911, 1 )
 colors = PoolColorArray( 1, 0.901961, 0, 0, 1, 0.901961, 0, 1, 1, 0.901961, 0, 1, 1, 0.901961, 0, 0 )
 
-[node name="Dragon" type="Node2D"]
+[sub_resource type="Animation" id=5]
+resource_name = "Flying"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 326, 892 ), Vector2( 1678, 886 ), Vector2( 326, 892 ) ]
+}
 
-[node name="Yellow" type="CPUParticles2D" parent="."]
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1678, 886 ) ]
+}
+
+[node name="Dragon" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Body" type="Node2D" parent="."]
+visible = false
+position = Vector2( 1678, 886 )
+script = ExtResource( 2 )
+
+[node name="Yellow" type="CPUParticles2D" parent="Body"]
 amount = 20
 local_coords = false
 texture = ExtResource( 1 )
@@ -32,7 +72,7 @@ scale_amount_random = 0.1
 scale_amount_curve = SubResource( 1 )
 color_ramp = SubResource( 2 )
 
-[node name="Sparkle2" type="CPUParticles2D" parent="."]
+[node name="Sparkle2" type="CPUParticles2D" parent="Body"]
 rotation = 2.34243
 amount = 30
 lifetime = 5.0
@@ -49,3 +89,8 @@ scale_amount_random = 0.02
 scale_amount_curve = SubResource( 3 )
 color = Color( 1, 0.901961, 0, 1 )
 color_ramp = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Flying"
+anims/Flying = SubResource( 5 )
+anims/RESET = SubResource( 6 )

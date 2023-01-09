@@ -32,6 +32,7 @@ func _ready() -> void:
 	add_card_to_deck(CardType.LANTERN)
 	add_card_to_deck(CardType.CAKE_STALL)
 	add_card_to_deck(CardType.CRANE)
+	add_card_to_deck(CardType.DRAGON)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):

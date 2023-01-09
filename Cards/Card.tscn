@@ -1,13 +1,20 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Cards/Card.gd" type="Script" id=1]
 [ext_resource path="res://Cards/Lantern.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Graphics/Cards/front0000.png" type="Texture" id=3]
-[ext_resource path="res://Graphics/Cards/spiriticon0000.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Cards/star0000.png" type="Texture" id=4]
 [ext_resource path="res://Sounds/Card Soft Place.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/Card Place.wav" type="AudioStream" id=6]
 [ext_resource path="res://Utils/GlowParent.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Graphics/EastSeaDokdo-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Graphics/Cards/shadow0000.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 8 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 32, 45 )
@@ -39,18 +46,27 @@ scale = Vector2( 0.08, 0.08 )
 
 [node name="Lantern" parent="Scaler/CardFront" instance=ExtResource( 2 )]
 
-[node name="SpiritCost" type="Sprite" parent="Scaler"]
-position = Vector2( 19, -11 )
-scale = Vector2( 0.08, 0.08 )
-texture = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="Scaler/SpiritCost"]
-margin_left = -25.0
-margin_top = -62.5
-margin_right = 15.0
-margin_bottom = -48.5
+[node name="SpiritCost" type="Label" parent="Scaler"]
+margin_left = 12.0
+margin_top = -22.0
+margin_right = 25.0
+margin_bottom = -8.0
 text = "5"
 align = 1
+
+[node name="Star" type="Sprite" parent="Scaler"]
+self_modulate = Color( 0.945098, 1, 0, 1 )
+position = Vector2( 12, 10 )
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 4 )
+
+[node name="Stat" type="Label" parent="Scaler"]
+margin_left = -24.0
+margin_top = 5.0
+margin_right = -1.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 4 )
+text = "DMG: 10"
 
 [node name="CardBack" type="Sprite" parent="Scaler"]
 visible = false

@@ -22,7 +22,8 @@ func _ready() -> void:
 	add_to_group("cheers")
 	$SoundTrail.pitch_scale = rand_range(0.8, 1.2)
 	$SoundTrail.play()
-	var col = possible_colors.shuffle()[0]
+	possible_colors.shuffle()
+	var col = possible_colors[0]
 	$Firework.self_modulate = col
 	$Rocket.self_modulate = col
 

@@ -9,3 +9,7 @@ func _on_Info_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT && event.pressed == false:
 			get_tree().change_scene("res://Level/Level.tscn")
+
+
+func _on_Start_pressed() -> void:
+	get_tree().change_scene("res://Level/Level.tscn")

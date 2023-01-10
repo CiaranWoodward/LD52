@@ -64,7 +64,7 @@ func _process(delta: float) -> void:
 		elif escaping || relaying:
 			escaping = false
 			relaying = false
-			relay()
+			relay(false)
 		else:
 			wander()
 	else:
@@ -91,7 +91,7 @@ func goto_closest_zone(zones):
 		return
 	goto_point = best_zone.get_global_point_in_zone()
 
-func relay():
+func relay(locked=true):
 	target = null
 	relaying = true
 	goto_random_zone(get_tree().get_nodes_in_group("enemy_relay_zones"))

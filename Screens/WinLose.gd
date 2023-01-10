@@ -15,4 +15,5 @@ func _ready() -> void:
 		$MarginContainer/Completed.visible = false
 
 func _on_TextureButton_pressed() -> void:
+	Global.game_completed = false
 	get_tree().change_scene("res://Shop/Shop.tscn")

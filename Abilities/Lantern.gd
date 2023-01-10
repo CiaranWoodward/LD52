@@ -3,8 +3,8 @@ extends KinematicBody2D
 export var active = true
 export var speed = -50
 
-export var trigger_range = 100.0
-export var damage_range = 130.0
+export var trigger_range = 110.0
+export var damage_range = 150.0
 var exploded = false
 var damage = 10
 var cheerval = 0.1

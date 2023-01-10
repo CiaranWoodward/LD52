@@ -55,6 +55,26 @@ func _ready() -> void:
 		Global.connect("spirit_changed", self, "_spirit_changed")
 	refresh_gui()
 
+func reset_for_unseat():
+	if !is_instance_valid(growTween):
+		return
+	$Scaler/CardBack.visible = false
+	growTween.stop_all()
+	reseatTween.stop_all()
+	position = Vector2.ZERO
+	is_active = true
+	growScale = 2.0
+	mouse_over = false
+	moused_down = false
+	reseat_target = null
+	reseat_offset = Vector2.ZERO
+	reseat_rotationoffset = 0
+	reseat_callback = null
+	mousehover_ignore = false
+	$Scaler.scale = Vector2.ONE
+	rotation = 0
+	z_index = 0
+
 func refresh_gui():
 	if is_instance_valid(typeobj):
 		if typeobj.upgrade_level == 0:

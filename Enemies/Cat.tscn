@@ -96,6 +96,7 @@ tracks/0/keys = {
 }
 
 [node name="Cat" type="Node2D"]
+modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 5 )
 

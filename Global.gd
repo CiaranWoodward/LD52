@@ -74,9 +74,9 @@ func remove_deck_from_tree():
 	hovered_card = null
 	for card in deck:
 		var p = card.get_parent()
+		card.is_active = true
 		if is_instance_valid(p):
 			p.remove_child(card)
-		card.is_active = true
 		card.growScale = 2.0
 
 func set_moon_health(newval):

@@ -5,7 +5,7 @@ export var cheer_range = 350.0
 export var positive_weak_cheer_range = 550.0
 
 export var base_cheer = 0.25
-export var max_cheer = 0.5
+export var max_cheer = 0.7
 export var min_cheer = 0.0
 export var max_color = Color("ffe600")
 export var min_color = Color.black

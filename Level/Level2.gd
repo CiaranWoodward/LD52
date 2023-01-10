@@ -25,14 +25,14 @@ func _ready() -> void:
 	cat.connect("timeout", self, "cattime")
 	pig.connect("timeout", self, "pigtime")
 	fox.connect("timeout", self, "foxtime")
-	apocalypse.start(300)
+	apocalypse.start(400)
 	cat.start(15)
 	pig.start(20)
 	fox.start(5)
 
 func apocotime():
 	spawn(fox_scene)
-	apocotime().start(5)
+	apocalypse.start(5)
 
 func cattime():
 	spawn(cat_scene)

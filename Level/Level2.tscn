@@ -18,6 +18,7 @@
 [ext_resource path="res://Abilities/FirecrackerOverlay.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Level/EnemyZone.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Abilities/CraneOverlay.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Level/Level2.gd" type="Script" id=19]
 [ext_resource path="res://Graphics/MainTheme.tres" type="Theme" id=22]
 [ext_resource path="res://Graphics/small border0000.png" type="Texture" id=23]
 [ext_resource path="res://Abilities/LanternOverlay.tscn" type="PackedScene" id=24]
@@ -28,7 +29,6 @@
 [ext_resource path="res://Music/Battle Song.ogg" type="AudioStream" id=29]
 [ext_resource path="res://Level/Portal.gd" type="Script" id=30]
 [ext_resource path="res://Level/CrowdCheer.tscn" type="PackedScene" id=31]
-[ext_resource path="res://Level/Level.gd" type="Script" id=32]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 6.60012e-43, 0.150838, 0.659218, 1 )
@@ -453,8 +453,8 @@ tracks/2/keys = {
 "values": [ Vector2( 410, 779 ) ]
 }
 
-[node name="Level" type="Node2D"]
-script = ExtResource( 32 )
+[node name="Level2" type="Node2D"]
+script = ExtResource( 19 )
 
 [node name="BattleMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 29 )
@@ -711,7 +711,7 @@ patch_margin_bottom = 34
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 10 )
-text = "1996"
+text = "1997"
 align = 1
 valign = 1
 

@@ -4,10 +4,22 @@ func card_type():
 	return Global.CardType.DRAGON
 
 func coin_cost():
-	return 15
+	return 20
 
 func spirit_cost():
 	return 8
 
+func max_upgrade_level() -> int:
+	return 1
+
 func lifetime():
-	return 10.0
+	if upgrade_level == 0:
+		return 12.0
+	else:
+		return 20.0
+
+func cheer() -> float:
+	return 0.8
+
+func stat_text() -> String:
+	return str(lifetime()) + " seconds"

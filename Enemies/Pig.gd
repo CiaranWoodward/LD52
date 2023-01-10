@@ -1,6 +1,6 @@
 extends Node2D
 
-export var speed = 70.0
+export var speed = 40.0
 export var rotate_speed = PI/2
 export var attack_range = 30.0
 export var health = 60
@@ -108,6 +108,8 @@ func kill_target():
 		escape()
 
 func damage(damage):
+	if health < 0:
+		return
 	health -= damage
 	$Hurt.pitch_scale = rand_range(0.8, 1.2)
 	$Hurt.play()

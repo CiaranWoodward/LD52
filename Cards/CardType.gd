@@ -8,7 +8,7 @@ func card_type():
 	return Global.CardType.LANTERN
 
 func coin_cost() -> int:
-	return 2
+	return 5
 
 func spirit_cost() -> int:
 	return 2
@@ -27,3 +27,6 @@ func cheer() -> float:
 
 func coin_period() -> float:
 	return 0.0
+
+func stat_text() -> String:
+	return ""

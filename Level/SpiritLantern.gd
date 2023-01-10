@@ -11,12 +11,13 @@ func _ready() -> void:
 	$AnimationTree.active = true
 	stateMachine.start("Off")
 	Global.connect("spirit_changed", self, "_spirit_changed")
-	_spirit_changed()
 
 func _spirit_changed():
 	if Global.spirit >= spirit_level:
 		if !glowing:
+			glowing = true
 			stateMachine.travel("OnBob")
 	else:
 		if glowing:
+			glowing = false
 			stateMachine.travel("Off")

@@ -97,6 +97,7 @@ tracks/0/keys = {
 }
 
 [node name="Pig" type="Node2D"]
+scale = Vector2( 0.25, 0.25 )
 script = ExtResource( 5 )
 
 [node name="Black" type="CPUParticles2D" parent="."]
@@ -161,3 +162,5 @@ stream = ExtResource( 7 )
 pitch_scale = 0.2
 autoplay = true
 bus = "Enemy Idle"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

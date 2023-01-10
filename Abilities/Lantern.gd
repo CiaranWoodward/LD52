@@ -55,8 +55,8 @@ func cause_damage():
 
 func cheer():
 	if exploded:
-		return cheerval
-	return 0.0
+		return cheerval*2
+	return cheerval
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Die":

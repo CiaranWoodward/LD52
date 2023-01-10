@@ -8,6 +8,15 @@ var damage = 10
 var cheerval = 0.3
 var target : Vector2 setget set_target
 
+var possible_colors = [
+	Color("fa2111"),
+	Color("1182fa"),
+	Color("f811fa"),
+	Color("11fa25"),
+	Color("b25bf9"),
+	Color("fff342"),
+]
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("cheers")

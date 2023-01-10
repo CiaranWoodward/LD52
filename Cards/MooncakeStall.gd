@@ -11,3 +11,9 @@ func coin_period() -> float:
 
 func cheer() -> float:
 	return 0.1
+
+func stat_text() -> String:
+	return str(coin_period()) + "¥/s, " + str(lifetime()) + " seconds"
+
+func spirit_cost() -> int:
+	return 3

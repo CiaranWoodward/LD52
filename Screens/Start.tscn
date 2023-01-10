@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Graphics/Background/landscape0000.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Background/moon0000.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Graphics/Background/title0000.png" type="Texture" id=6]
 [ext_resource path="res://Graphics/Background/starthover0000.png" type="Texture" id=7]
 [ext_resource path="res://Graphics/Background/startclick0000.png" type="Texture" id=8]
+[ext_resource path="res://Screens/Start.gd" type="Script" id=9]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0 ), 0.0, 3.32841, 0, 0, Vector2( 0.49505, 1 ), -0.031125, -0.031125, 0, 0, Vector2( 1, 0 ), -3.67273, 0.0, 0, 0 ]
@@ -51,6 +52,7 @@ rect_scale = Vector2( 0.731111, 0.731111 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 8 )
 texture_hover = ExtResource( 7 )
+script = ExtResource( 9 )
 
 [node name="Explosion2" type="CPUParticles2D" parent="."]
 emitting = false
@@ -69,3 +71,5 @@ scale_amount = 8.0
 scale_amount_random = 0.5
 scale_amount_curve = SubResource( 1 )
 color_ramp = SubResource( 2 )
+
+[connection signal="pressed" from="Start" to="Start" method="_on_Start_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Graphics/e0000.png" type="Texture" id=1]
 [ext_resource path="res://Shop/CardHolder.tscn" type="PackedScene" id=2]
@@ -10,6 +10,11 @@
 [ext_resource path="res://Shop/NextLevel.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Shop/CardSelect.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Music/Shop Song.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Graphics/EastSeaDokdo-Regular.ttf" type="DynamicFontData" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 11 )
 
 [node name="Shop" type="Control"]
 anchor_right = 1.0
@@ -79,20 +84,21 @@ mouse_filter = 2
 
 [node name="Instruction" type="Label" parent="GreyOut/Backing/VBox/DeckFloor/Deck"]
 margin_right = 1278.0
-margin_bottom = 40.0
+margin_bottom = 49.0
 rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = SubResource( 1 )
 text = "Select a card to upgrade or discard"
 align = 1
-valign = 1
+valign = 2
 
 [node name="DeckScroller" type="ScrollContainer" parent="GreyOut/Backing/VBox/DeckFloor/Deck"]
-margin_top = 44.0
+margin_top = 53.0
 margin_right = 1278.0
 margin_bottom = 574.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_min_size = Vector2( 0, 530 )
 mouse_filter = 2
+size_flags_vertical = 3
 scroll_horizontal_enabled = false
 script = ExtResource( 5 )
 
@@ -164,8 +170,10 @@ margin_bottom = 1028.0
 [node name="NextLevel" parent="." instance=ExtResource( 8 )]
 anchor_left = 1.0
 anchor_top = 1.0
-margin_left = -208.0
-margin_top = -118.0
+margin_left = -227.0
+margin_top = -140.0
+margin_right = -19.0
+margin_bottom = -22.0
 
 [node name="ShopMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Cards/Card.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/Cards/front0000.png" type="Texture" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://Sounds/CoinSpend3.wav" type="AudioStream" id=5]
 [ext_resource path="res://Sounds/CoinSpend2.wav" type="AudioStream" id=6]
 [ext_resource path="res://Sounds/CoinSpend1.wav" type="AudioStream" id=7]
+[ext_resource path="res://Graphics/EastSeaDokdo-Regular.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 8 )
 
 [node name="ShopFloor" type="Control"]
 margin_right = 110.0
@@ -25,18 +30,22 @@ patch_margin_top = 148
 patch_margin_right = 148
 patch_margin_bottom = 148
 
+[node name="Coin" type="Sprite" parent="NinePatchRect"]
+position = Vector2( 1255.88, 53.065 )
+scale = Vector2( 0.0980529, 0.0980529 )
+texture = ExtResource( 3 )
+
+[node name="Node2D" type="Node2D" parent="NinePatchRect"]
+
 [node name="Gold" type="Label" parent="NinePatchRect"]
-margin_left = 1225.0
-margin_top = 37.0
-margin_right = 1241.0
-margin_bottom = 51.0
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 1241.0
+margin_top = 73.0
+margin_right = 1267.0
+margin_bottom = 106.0
+custom_fonts/font = SubResource( 1 )
 text = "20"
 align = 2
-
-[node name="Coin" type="Sprite" parent="NinePatchRect"]
-position = Vector2( 1266, 43 )
-scale = Vector2( 0.06, 0.06 )
-texture = ExtResource( 3 )
 
 [node name="Firework" type="Node2D" parent="."]
 position = Vector2( 173, 143 )
@@ -44,9 +53,10 @@ rotation = -0.12094
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Firework" groups=["shop_cards"] instance=ExtResource( 1 )]
+show_cost = true
 editor_placed_card = true
 editor_card_type = 1
-growScale = 1.5
+growScale = 1.8
 selectable = false
 
 [node name="Firecracker" type="Node2D" parent="."]
@@ -55,9 +65,10 @@ rotation = 0.0171473
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Firecracker" groups=["shop_cards"] instance=ExtResource( 1 )]
+show_cost = true
 editor_placed_card = true
 editor_card_type = 2
-growScale = 1.5
+growScale = 1.8
 selectable = false
 
 [node name="Lantern" type="Node2D" parent="."]
@@ -66,8 +77,9 @@ rotation = -0.0716459
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Lantern" groups=["shop_cards"] instance=ExtResource( 1 )]
+show_cost = true
 editor_placed_card = true
-growScale = 1.5
+growScale = 1.8
 selectable = false
 
 [node name="MoonCrane" type="Node2D" parent="."]
@@ -76,9 +88,10 @@ rotation = -0.0717576
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="MoonCrane" groups=["shop_cards"] instance=ExtResource( 1 )]
+show_cost = true
 editor_placed_card = true
 editor_card_type = 6
-growScale = 1.5
+growScale = 1.8
 selectable = false
 
 [node name="Dragon" type="Node2D" parent="."]
@@ -87,9 +100,10 @@ rotation = 0.000586942
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="Dragon" groups=["shop_cards"] instance=ExtResource( 1 )]
+show_cost = true
 editor_placed_card = true
 editor_card_type = 0
-growScale = 1.5
+growScale = 1.8
 selectable = false
 
 [node name="LightStall" type="Node2D" parent="."]
@@ -98,9 +112,10 @@ rotation = 0.0570701
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="LightStall" groups=["shop_cards"] instance=ExtResource( 1 )]
+show_cost = true
 editor_placed_card = true
 editor_card_type = 4
-growScale = 1.5
+growScale = 1.8
 selectable = false
 
 [node name="CoinStall" type="Node2D" parent="."]
@@ -109,9 +124,10 @@ rotation = -0.0692535
 scale = Vector2( 2, 2 )
 
 [node name="Card" parent="CoinStall" groups=["shop_cards"] instance=ExtResource( 1 )]
+show_cost = true
 editor_placed_card = true
 editor_card_type = 5
-growScale = 1.5
+growScale = 1.8
 selectable = false
 
 [node name="Spend1" type="AudioStreamPlayer" parent="."]

@@ -3,6 +3,7 @@ extends Node2D
 signal card_clicked(card)
 
 # Only for editor-placed cards!
+export(bool) var show_cost = false
 export(bool) var editor_placed_card = false
 export(Global.CardType) var editor_card_type = Global.CardType.LANTERN
 
@@ -50,6 +51,21 @@ func _ready() -> void:
 	Global.connect("change_selected_card", self, "_changed_selected_card")
 	if editor_placed_card:
 		set_type(editor_card_type)
+	else:
+		Global.connect("spirit_changed", self, "_spirit_changed")
+	refresh_gui()
+
+func refresh_gui():
+	if is_instance_valid(typeobj):
+		if typeobj.upgrade_level == 0:
+			$Scaler/Star.modulate = Color("44444488")
+		else:
+			$Scaler/Star.modulate = Color("f1ff00")
+		$Scaler/SpiritCostScaler/SpiritCost.text = str(typeobj.spirit_cost())
+		$Scaler/StatScaler/Stat.text = typeobj.stat_text()
+		if show_cost:
+			$Scaler/Cost.visible = true
+			$Scaler/Cost/Stat.text = str(typeobj.coin_cost())
 
 func set_type(type):
 	var newtype
@@ -84,6 +100,8 @@ func coin_cost():
 	return typeobj.coin_cost()
 
 func spirit_cost():
+	if !is_instance_valid(typeobj):
+		return 0.0
 	return typeobj.spirit_cost()
 	
 func max_upgrade_level():
@@ -110,6 +128,12 @@ func _changed_selected_card(_old, new):
 func discard():
 	if is_instance_valid(Global.hud):
 		Global.hud.discard(self)
+
+func _spirit_changed():
+	if can_afford():
+		modulate = Color.white
+	else:
+		modulate = Color.darkslategray
 
 func set_active(active: bool):
 	is_active = active
@@ -174,7 +198,10 @@ func _reseat_done():
 		reseat_target.add_child(self)
 	if is_instance_valid(reseat_callback):
 		reseat_callback.call_deferred("call_func")
-	
+
+func can_afford() -> bool:
+	return (Global.spirit >= spirit_cost())
+
 func _on_MouseSelectArea_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if !is_active || ignore_mouse:
 		return
@@ -185,7 +212,7 @@ func _on_MouseSelectArea_input_event(_viewport: Node, event: InputEvent, _shape_
 			else:
 				if moused_down:
 					emit_signal("card_clicked", self)
-					if selectable && Global.selected_card != self && is_active:
+					if selectable && Global.selected_card != self && is_active && can_afford():
 						Global.selected_card = self
 						$SoundClick.pitch_scale = rand_range(1, 1.1)
 						$SoundClick.play()

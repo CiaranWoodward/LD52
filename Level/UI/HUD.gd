@@ -4,11 +4,23 @@ onready var _discard = $DiscardPile
 onready var _draw = $DrawPile
 onready var _hand = $Hand
 
+var cheerless_time = 0.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.hud = self
 	_draw.connect("cards_added", self, "_draw_replaced")
 	add_fresh_deck_to_discard_pile()
+
+func _process(delta: float) -> void:
+	var total_cheer = Global.cheer_left + Global.cheer_right
+	if total_cheer < 0.05:
+		cheerless_time += delta
+	elif total_cheer > 0.15:
+		cheerless_time = 0
+	if cheerless_time > min(Global.spirit, 3):
+		Global.remove_deck_from_tree()
+		get_tree().change_scene("res://Screens/WinLose.tscn")
 
 func add_fresh_deck_to_discard_pile():
 	# First remove all of the cards from the screen (this should just be the editor placeholders!)
@@ -19,18 +31,12 @@ func add_fresh_deck_to_discard_pile():
 	# Then prepare and store the global deck in the discard pile
 	_discard.spawn_global_deck()
 	
-	# Connect the click (We can remove this if we don't use it...)
-	for card in Global.deck:
-		card.connect("card_clicked", self, "card_clicked")
-	
 	# Immediately start the shuffle to the Draw pile which will also fill the hand
 	replace_draw()
 
-func card_clicked(card):
-	pass
-
 func discard(card):
 	card.is_active = false
+	Global.spirit -= card.spirit_cost()
 	card.reseat_to(_discard, 0.0, _discard.get_next_offset(), _discard.get_random_rotation(), funcref(self, "_card_discarded"))
 
 func _card_discarded():

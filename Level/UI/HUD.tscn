@@ -17,9 +17,11 @@ scale = Vector2( 1.2, 1.2 )
 script = ExtResource( 4 )
 
 [node name="Card5" parent="DrawPile" instance=ExtResource( 1 )]
+editor_placed_card = true
 is_active = false
 
 [node name="Card6" parent="DrawPile" instance=ExtResource( 1 )]
+editor_placed_card = true
 is_active = false
 
 [node name="Hand" type="Position2D" parent="."]
@@ -32,17 +34,20 @@ position = Vector2( -82.2222, -13.8889 )
 rotation = -0.376973
 
 [node name="Card" parent="Hand/1" instance=ExtResource( 1 )]
+editor_placed_card = true
 
 [node name="2" type="Position2D" parent="Hand"]
 position = Vector2( 11, -33.5 )
 
 [node name="Card2" parent="Hand/2" instance=ExtResource( 1 )]
+editor_placed_card = true
 
 [node name="3" type="Position2D" parent="Hand"]
 position = Vector2( 106.667, -11.6667 )
 rotation = 0.50306
 
 [node name="Card3" parent="Hand/3" instance=ExtResource( 1 )]
+editor_placed_card = true
 
 [node name="DiscardPile" type="Position2D" parent="."]
 position = Vector2( 1335, 1007 )
@@ -51,6 +56,7 @@ scale = Vector2( 1.2, 1.2 )
 script = ExtResource( 3 )
 
 [node name="Card4" parent="DiscardPile" instance=ExtResource( 1 )]
+editor_placed_card = true
 is_active = false
 
 [node name="SoundShuffle" type="AudioStreamPlayer" parent="."]

@@ -68,7 +68,6 @@ func _unhandled_input(event):
 			var lifetime = Global.selected_card.lifetime()
 			cheerval = Global.selected_card.cheer()
 			coin_period = Global.selected_card.coin_period()
-			evaluate_coin()
 			if lifetime == 0: lifetime = 5
 			decay_rate =  1/lifetime
 			if type == Global.CardType.LIGHT_STALL:
@@ -77,6 +76,7 @@ func _unhandled_input(event):
 			else:
 				mooncake_stock = 1.0
 				lantern_stock = 0.0
+			evaluate_coin()
 			Global.selected_card.discard()
 
 func evaluate_coin():
@@ -94,7 +94,6 @@ func evaluate_coin():
 func _selected_card_changed(_old, new):
 		stall_selected = is_stall_selected()
 		$GlowParent.active = stall_selected
-
 
 func is_stall_selected() -> bool:
 	if !is_instance_valid(Global.selected_card):

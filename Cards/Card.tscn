@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Cards/Card.gd" type="Script" id=1]
 [ext_resource path="res://Cards/Lantern.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Sounds/Card Place.wav" type="AudioStream" id=6]
 [ext_resource path="res://Utils/GlowParent.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Graphics/EastSeaDokdo-Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Graphics/Cards/coin0000.png" type="Texture" id=9]
 [ext_resource path="res://Graphics/Cards/shadow0000.png" type="Texture" id=14]
 
 [sub_resource type="DynamicFont" id=5]
@@ -80,8 +81,7 @@ custom_fonts/font = SubResource( 4 )
 text = "DMG: 10"
 
 [node name="Star" type="Sprite" parent="Scaler"]
-self_modulate = Color( 0.945098, 1, 0, 1 )
-position = Vector2( 12, 10 )
+position = Vector2( 20, 3 )
 scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 4 )
 
@@ -90,6 +90,27 @@ visible = false
 self_modulate = Color( 0.364706, 0.364706, 0.364706, 1 )
 scale = Vector2( 0.08, 0.08 )
 texture = ExtResource( 3 )
+
+[node name="Cost" type="Node2D" parent="Scaler"]
+visible = false
+position = Vector2( -8, -59 )
+scale = Vector2( 0.07, 0.07 )
+
+[node name="Stat" type="Label" parent="Scaler/Cost"]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = -357.143
+margin_top = -4.57764e-05
+margin_right = 159.857
+margin_bottom = 345.0
+custom_fonts/font = SubResource( 4 )
+text = "Hello
+"
+align = 2
+
+[node name="Sprite" type="Sprite" parent="Scaler/Cost"]
+position = Vector2( 257.144, 71.4287 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 9 )
 
 [node name="MouseSelectArea" type="Area2D" parent="Scaler"]
 

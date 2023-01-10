@@ -10,9 +10,11 @@ signal spirit_changed()
 
 var spirit_cost = 1.0
 var max_spirit = 10
+var game_completed = false
 
-var cheer_left = 0.1
-var cheer_right = 0.1
+var next_level_path = "res://Level/Level.tscn"
+var cheer_left = 0.4
+var cheer_right = 0.4
 var spirit = int(0) setget set_spirit
 var spirit_overflow = 0.0
 var coin = int(10) setget set_coin
@@ -72,6 +74,7 @@ func remove_deck_from_tree():
 		var p = card.get_parent()
 		if is_instance_valid(p):
 			p.remove_child(card)
+		card.is_active = true
 
 func set_moon_health(newval):
 	moon_health = float(newval)

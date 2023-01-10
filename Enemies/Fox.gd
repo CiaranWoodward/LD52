@@ -1,7 +1,7 @@
 extends Node2D
 
 export var sight_range = 450.0
-export var wander_speed = 100.0
+export var wander_speed = 70.0
 export var rotate_speed = PI/2
 export var health = 20
 export var torment_value = 0.3
@@ -79,6 +79,8 @@ func wander():
 	goto_closest_zone(get_tree().get_nodes_in_group("enemy_torment_zones"))
 
 func damage(damage):
+	if health < 0:
+		return
 	health -= damage
 	$Hurt.pitch_scale = rand_range(0.7, 1.3)
 	$Hurt.play()

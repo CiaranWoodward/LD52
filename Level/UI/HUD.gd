@@ -14,9 +14,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var total_cheer = Global.cheer_left + Global.cheer_right
-	if total_cheer < 0.05:
+	if total_cheer < 0.1:
 		cheerless_time += delta
-	elif total_cheer > 0.15:
+	elif total_cheer > 0.20:
 		cheerless_time = 0
 	if cheerless_time > min(Global.spirit, 3):
 		Global.remove_deck_from_tree()

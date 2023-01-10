@@ -14,8 +14,8 @@ var pig_scene = preload("res://Enemies/Pig.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.connect("moon_health_changed", self, "_moon_health_changed")
-	Global.max_moon_health = 80
-	Global.moon_health = 80
+	Global.max_moon_health = 120
+	Global.moon_health = 120
 	add_child(apocalypse)
 	add_child(cat)
 	add_child(pig)
@@ -25,14 +25,14 @@ func _ready() -> void:
 	cat.connect("timeout", self, "cattime")
 	pig.connect("timeout", self, "pigtime")
 	fox.connect("timeout", self, "foxtime")
-	apocalypse.start(300)
+	apocalypse.start(400)
 	cat.start(10)
 	pig.start(20)
 	fox.start(5)
 
 func apocotime():
 	spawn(fox_scene)
-	apocotime().start(5)
+	apocotime.start(5)
 
 func cattime():
 	spawn(cat_scene)

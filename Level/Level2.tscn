@@ -621,6 +621,7 @@ texture = ExtResource( 10 )
 
 [node name="CrowdCheer" parent="Crowd/Left" instance=ExtResource( 31 )]
 position = Vector2( -51, -223 )
+is_left = true
 
 [node name="Right" type="Node2D" parent="Crowd"]
 position = Vector2( 1457, 924 )

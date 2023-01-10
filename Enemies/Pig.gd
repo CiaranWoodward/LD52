@@ -15,6 +15,7 @@ export var mooncrane_priority = 2
 export var mooncrane_hit_range = 30
 var _mouse_over = false
 var escaping = false
+var relaying = false
 
 # Pig goes: Spawn -> Relay -> Stall -> Escape -> Relay
 
@@ -39,7 +40,7 @@ func _process(delta: float) -> void:
 	if is_instance_valid(target) && !target.has_stock():
 		target = null
 		wander()
-	if !escaping && !is_instance_valid(target):
+	if !escaping && !relaying && !is_instance_valid(target):
 		find_target()
 	if is_instance_valid(target):
 		dest = target.get_global_position()
@@ -60,7 +61,9 @@ func _process(delta: float) -> void:
 		global_position = dest
 		if is_instance_valid(target):
 			pass
-		elif escaping:
+		elif escaping || relaying:
+			escaping = false
+			relaying = false
 			relay()
 		else:
 			wander()
@@ -90,6 +93,7 @@ func goto_closest_zone(zones):
 
 func relay():
 	target = null
+	relaying = true
 	goto_random_zone(get_tree().get_nodes_in_group("enemy_relay_zones"))
 
 func wander():

@@ -14,8 +14,8 @@ var pig_scene = preload("res://Enemies/Pig.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.connect("moon_health_changed", self, "_moon_health_changed")
-	Global.max_moon_health = 80
-	Global.moon_health = 80
+	Global.max_moon_health = 100
+	Global.moon_health = 100
 	add_child(apocalypse)
 	add_child(cat)
 	add_child(pig)

@@ -70,11 +70,14 @@ func remove_card_from_deck(card):
 	card.queue_free()
 
 func remove_deck_from_tree():
+	set_selected_card(null)
+	hovered_card = null
 	for card in deck:
 		var p = card.get_parent()
 		if is_instance_valid(p):
 			p.remove_child(card)
 		card.is_active = true
+		card.growScale = 2.0
 
 func set_moon_health(newval):
 	moon_health = float(newval)

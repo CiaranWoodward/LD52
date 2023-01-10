@@ -19,7 +19,7 @@ func lifetime():
 		return 20.0
 
 func cheer() -> float:
-	return 0.8
+	return 1.0
 
 func stat_text() -> String:
 	return str(lifetime()) + " seconds"

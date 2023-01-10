@@ -31,7 +31,7 @@ func get_cheer():
 		if dist < cheer_range:
 			total_cheer += cheeramount
 		elif cheeramount > 0 && dist < positive_weak_cheer_range:
-			total_cheer += cheeramount/2.0
+			total_cheer += cheeramount/3.0
 	if total_cheer < min_cheer:
 		total_cheer = min_cheer
 	if total_cheer > max_cheer:

@@ -3,6 +3,7 @@ extends Node2D
 export var is_left = false
 export var cheer_range = 350.0
 export var positive_weak_cheer_range = 550.0
+export var tween_time = 0.3
 
 export var base_cheer = 0.25
 export var max_cheer = 0.7
@@ -10,17 +11,28 @@ export var min_cheer = 0.0
 export var max_color = Color("ffe600")
 export var min_color = Color.black
 
+var last_modulate
+
+onready var modtween = Tween.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	last_modulate = get_parent().modulate
+	add_child(modtween)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	get_cheer()
+	var new_modulate
 	if is_left:
-		get_parent().modulate = get_interpolated_color(Global.cheer_left)
+		new_modulate = get_interpolated_color(Global.cheer_left)
 	else:
-		get_parent().modulate = get_interpolated_color(Global.cheer_right)
+		new_modulate = get_interpolated_color(Global.cheer_right)
+	if last_modulate != new_modulate:
+		last_modulate = new_modulate
+		modtween.stop_all()
+		modtween.interpolate_property(get_parent(), "modulate", get_parent().modulate, new_modulate, tween_time, Tween.TRANS_EXPO, Tween.EASE_OUT)
+		modtween.start()
 
 func get_cheer():
 	var cheers = get_tree().get_nodes_in_group("cheers")

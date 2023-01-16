@@ -35,7 +35,7 @@ theme = ExtResource( 3 )
 script = ExtResource( 8 )
 
 [node name="Grey" type="NinePatchRect" parent="."]
-self_modulate = Color( 0.129412, 0.129412, 0.129412, 1 )
+self_modulate = Color( 0, 0, 0, 0.101961 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
@@ -244,15 +244,16 @@ text = "Between years, you are able to review and manage your deck. You may buy,
 autowrap = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-self_modulate = Color( 0.180392, 0.192157, 0.866667, 1 )
+self_modulate = Color( 0, 0, 0, 0 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -141.5
-margin_top = -154.0
-margin_right = 141.5
-margin_bottom = -15.0
+margin_left = 752.0
+margin_top = -73.0
+margin_right = 994.0
+margin_bottom = 44.0
+rect_scale = Vector2( 0.5, 0.5 )
 texture = SubResource( 3 )
 region_rect = Rect2( 170.476, 446.737, 123.991, 24.058 )
 patch_margin_left = 87
@@ -260,19 +261,20 @@ patch_margin_top = 20
 patch_margin_right = 123
 patch_margin_bottom = 12
 
-[node name="Start" type="TextureButton" parent="."]
+[node name="Start" type="TextureButton" parent="NinePatchRect"]
+self_modulate = Color( 0.6, 0.635294, 0.905882, 1 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -129.5
-margin_top = -153.0
-margin_right = 129.5
-margin_bottom = -20.0
+margin_left = -132.0
+margin_top = -125.0
+margin_right = 127.0
+margin_bottom = 8.0
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 11 )
 texture_hover = ExtResource( 10 )
 expand = true
 
 [connection signal="gui_input" from="." to="." method="_on_Info_gui_input"]
-[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="NinePatchRect/Start" to="." method="_on_Start_pressed"]

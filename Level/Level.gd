@@ -4,6 +4,8 @@ var apocalypse = Timer.new()
 var cat = Timer.new()
 var pig = Timer.new()
 var fox = Timer.new()
+var moon_prompt = Timer.new()
+var moon_prompted = false
 var fade_out_tween = Tween.new()
 onready var spawnpoint = $Background/Landscape/Spawn
 
@@ -20,15 +22,19 @@ func _ready() -> void:
 	add_child(cat)
 	add_child(pig)
 	add_child(fox)
+	add_child(moon_prompt)
 	add_child(fade_out_tween)
 	apocalypse.connect("timeout", self, "apocotime")
 	cat.connect("timeout", self, "cattime")
 	pig.connect("timeout", self, "pigtime")
 	fox.connect("timeout", self, "foxtime")
+	moon_prompt.connect("timeout", self, "moonprompt")
 	apocalypse.start(400)
 	cat.start(20)
 	pig.start(30)
 	fox.start(5)
+	moon_prompt.start(15)
+	moon_prompt.one_shot = true
 
 func apocotime():
 	spawn(fox_scene)
@@ -46,6 +52,10 @@ func foxtime():
 	spawn(fox_scene)
 	fox.start(30)
 
+func moonprompt():
+	$MoonCranePopUpAnim.play("PopUp")
+	moon_prompted = true
+
 func spawn(scene):
 	var newscene = scene.instance()
 	add_child(newscene)
@@ -54,6 +64,9 @@ func spawn(scene):
 var exited = false
 func _moon_health_changed():
 	if exited: return
+	if moon_prompted:
+		$MoonCranePopUpAnim.play_backwards("PopUp")
+		moon_prompted = false
 	if Global.moon_health <= 0:
 		exited = true
 		Global.next_level_path = "res://Level/Level2.tscn"

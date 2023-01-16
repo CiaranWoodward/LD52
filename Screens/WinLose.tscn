@@ -44,7 +44,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0.129412, 0.129412, 0.129412, 0 ), Color( 0.129412, 0.129412, 0.129412, 1 ) ]
+"values": [ Color( 0.129412, 0.129412, 0.129412, 0 ), Color( 0, 0, 0, 0.101961 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("MarginContainer:modulate")
@@ -61,6 +61,7 @@ tracks/1/keys = {
 
 [sub_resource type="DynamicFont" id=15]
 size = 90
+extra_spacing_top = -12
 font_data = ExtResource( 4 )
 
 [node name="WinLose" type="Control"]
@@ -71,7 +72,7 @@ script = ExtResource( 5 )
 
 [node name="Grey" type="NinePatchRect" parent="."]
 modulate = Color( 0.129412, 0.129412, 0.129412, 1 )
-self_modulate = Color( 0.129412, 0.129412, 0.129412, 0 )
+self_modulate = Color( 0, 0, 0, 0.101961 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
@@ -222,9 +223,9 @@ anims/RESET = SubResource( 14 )
 anims/ScreenIn = SubResource( 13 )
 
 [node name="TextureButton" type="TextureButton" parent="."]
-self_modulate = Color( 0.690196, 0.133333, 0.133333, 1 )
+self_modulate = Color( 0.215686, 0.14902, 0.694118, 0.768627 )
 margin_left = 1486.0
-margin_top = 863.0
+margin_top = 899.0
 margin_right = 1764.0
 margin_bottom = 968.0
 texture_normal = ExtResource( 1 )

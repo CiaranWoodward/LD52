@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://Level/UI/HUD.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Graphics/Background/moon0000.png" type="Texture" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://Abilities/FirecrackerOverlay.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Level/EnemyZone.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Abilities/CraneOverlay.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Level/UI/MoonCranePopUp.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Graphics/MainTheme.tres" type="Theme" id=22]
 [ext_resource path="res://Graphics/small border0000.png" type="Texture" id=23]
 [ext_resource path="res://Abilities/LanternOverlay.tscn" type="PackedScene" id=24]
@@ -453,6 +454,37 @@ tracks/2/keys = {
 "values": [ Vector2( 410, 779 ) ]
 }
 
+[sub_resource type="Animation" id=18]
+resource_name = "PopUp"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("../MoonCranePopUp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 0.466516, 1 ),
+"update": 0,
+"values": [ Vector2( 960, -100 ), Vector2( 960, 76 ) ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("../MoonCranePopUp:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 960, -203 ) ]
+}
+
 [node name="Level" type="Node2D"]
 script = ExtResource( 32 )
 
@@ -779,3 +811,12 @@ type = "escape"
 position = Vector2( -188, 575 )
 size = Vector2( 100, 300 )
 type = "escape"
+
+[node name="MoonCranePopUpAnim" type="AnimationPlayer" parent="."]
+root_node = NodePath(".")
+anims/PopUp = SubResource( 18 )
+anims/RESET = SubResource( 19 )
+
+[node name="MoonCranePopUp" parent="." instance=ExtResource( 19 )]
+position = Vector2( 960, -203 )
+scale = Vector2( 0.5, 0.5 )

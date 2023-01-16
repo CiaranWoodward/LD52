@@ -26,7 +26,7 @@ func _ready() -> void:
 	Global.connect("change_selected_card", self, "_selected_card_changed")
 	$MooncraneTarget.connect("mouse_entered", self, "_mouseentered")
 	$MooncraneTarget.connect("mouse_exited", self, "_mouseexited")
-	is_mooncrane_selected()
+	_selected_card_changed(null, null)
 	$AnimationPlayer.play("Spawn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

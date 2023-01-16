@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Graphics/Cards/line0000.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Cards/picframe0000.png" type="Texture" id=2]
 [ext_resource path="res://Graphics/Cards/dragon0000.png" type="Texture" id=3]
 [ext_resource path="res://Cards/Dragon.gd" type="Script" id=4]
 [ext_resource path="res://Graphics/Cards/spiriticon0000.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/Abilities/dragon0000.png" type="Texture" id=6]
 [ext_resource path="res://Graphics/Cards/picback0000.png" type="Texture" id=7]
 [ext_resource path="res://Graphics/EastSeaDokdo-Regular.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Graphics/MainTheme.tres" type="Theme" id=9]
@@ -41,6 +42,10 @@ texture = ExtResource( 2 )
 [node name="SpiritCost" type="Sprite" parent="Pic"]
 position = Vector2( 224, -225 )
 texture = ExtResource( 5 )
+
+[node name="DragonFace" type="Sprite" parent="Pic"]
+position = Vector2( -133, -195 )
+texture = ExtResource( 6 )
 
 [node name="Line" type="Sprite" parent="."]
 position = Vector2( 0, 235 )

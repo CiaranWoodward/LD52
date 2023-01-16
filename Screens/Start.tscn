@@ -44,6 +44,7 @@ position = Vector2( 960, 656 )
 texture = ExtResource( 4 )
 
 [node name="Start" type="TextureButton" parent="."]
+self_modulate = Color( 0.709804, 0.74902, 1, 1 )
 margin_left = 823.0
 margin_top = 860.0
 margin_right = 1174.0
